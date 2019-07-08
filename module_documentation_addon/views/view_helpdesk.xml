@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ticket_view_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.view.buttons</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button name="create_documentation" string="Create documentation" type="object" class="oe_highlight" attrs="{'invisible': [('stage_id', '=', False)]}" />                    
+            </header>
+        </field>
+    </record>
+
+</odoo>

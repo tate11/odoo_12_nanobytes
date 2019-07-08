@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Documentation -->
+    <menuitem name="Documentation" id="menu_documentation" web_icon="module_documentation,static/description/icon.png" sequence="40" groups="module_documentation.group_manager,module_documentation.group_user"/>
+    <menuitem id="menu_d_dashboard" name="Dashboard" parent="module_documentation.menu_documentation" action="module_documentation.action_documentation_board" sequence="1" groups="module_documentation.group_manager,module_documentation.group_user"/>
+    <menuitem id="menu_h_tools" name="Tools" parent="module_documentation.menu_documentation" sequence="2" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_documentation" id="menu_documentation_documentation" parent="module_documentation.menu_h_tools" sequence="0" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_app" id="menu_documentation_app" parent="module_documentation.menu_h_tools" sequence="1" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_script" id="menu_documentation_script" parent="module_documentation.menu_h_tools" sequence="2" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_manual" id="menu_documentation_manual" parent="module_documentation.menu_h_tools" sequence="3" groups="module_documentation.group_manager,module_documentation.group_user"/>
+    <menuitem id="menu_v_views" name="Views" parent="module_documentation.menu_documentation" sequence="3" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_category_view" id="menu_documentation_category_view" parent="module_documentation.menu_v_views" sequence="0" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_language_view" id="menu_documentation_language_view" parent="module_documentation.menu_v_views" sequence="1" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_owner_view" id="menu_documentation_ownerview" parent="module_documentation.menu_v_views" sequence="2" groups="module_documentation.group_manager,module_documentation.group_user"/>
+    <menuitem id="menu_c_config" name="Configuration" parent="module_documentation.menu_documentation" sequence="99"/>
+        <menuitem action="module_documentation.action_documentation_dashboard" id="menu_documentation_settings" parent="module_documentation.menu_c_config" sequence="0" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_category" id="menu_documentation_category" parent="module_documentation.menu_c_config" sequence="1" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_language" id="menu_documentation_language" parent="module_documentation.menu_c_config" sequence="2" groups="module_documentation.group_manager,module_documentation.group_user"/>
+        <menuitem action="module_documentation.action_documentation_tag" id="menu_documentation_tag" parent="module_documentation.menu_c_config" sequence="3" groups="module_documentation.group_manager,module_documentation.group_user"/>
+
+</odoo>

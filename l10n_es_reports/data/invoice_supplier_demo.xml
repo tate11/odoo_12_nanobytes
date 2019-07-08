@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+         <!-- FACTURAS PROVEEDORES PAGADA-->
+
+        <record id="account_invoice_supplier_1" model="account.invoice" context="{'type': 'in_invoice'}">
+            <field name="payment_term_id" eval="1"/>
+            <field name="partner_id" eval="1"/>
+            <field name="state">paid</field>
+            <field name="move_name">FACT/2018/0001</field>
+            <field name="date_invoice">2018-11-13</field>
+            <field name="date_due">2018-11-13</field>
+            <field name="date">2018-11-13</field>
+            <field name="reference">REF</field>
+            <field name="journal_id" eval="2"/>
+            <field name="user_id" eval="1"/>
+            <field name="account_id" eval="188"/>
+        </record>
+
+        <record id="account_move_line_supplier_1_1" model="account.invoice.line">
+            <field name="product_id" ref="producto3"/>
+            <field name="name">Ordenador</field>
+            <field name="price_unit" eval="2000"/>
+            <field name="invoice_line_tax_ids" eval="[(4, 4)]"/>
+            <field name="account_id" eval="356"/>
+            <field name="invoice_id" ref="account_invoice_supplier_1"/>
+        </record>
+
+        <record id="account_invoice_tax_supplier" model="account.invoice.tax">
+            <field name="name">21% IVA soportado (bienes corrientes)</field>
+            <field name="invoice_id" ref="account_invoice_supplier_1"/>
+            <field name="tax_id" eval="1"/>
+            <field name="account_id" eval="228"/>
+            <field name="amount" eval="420.00"/>
+        </record>
+
+        <!-- FACTURAS PROVEEDORES EN ESTADO ABRIR-->
+
+        <record id="account_invoice_supplier_2" model="account.invoice" context="{'type': 'in_invoice'}">
+            <field name="payment_term_id" eval="1"/>
+            <field name="partner_id" eval="1"/>
+            <field name="name">HODOR</field>
+            <field name="state">open</field>
+            <field name="move_name">FACT/2018/0002</field>
+            <field name="date_invoice">2018-11-13</field>
+            <field name="date_due">2018-11-13</field>
+            <field name="date">2018-11-13</field>
+            <field name="reference">REFFF</field>
+            <field name="journal_id" eval="2"/>
+            <field name="user_id" eval="1"/>
+            <field name="account_id" eval="188"/>
+        </record>
+
+        <record id="account_move_line_supplier_2_1" model="account.invoice.line">
+            <field name="product_id" ref="producto3"/>
+            <field name="name">Ordenador</field>
+            <field name="price_unit" eval="2000"/>
+            <field name="invoice_line_tax_ids" eval="[(4, 4)]"/>
+            <field name="account_id" eval="356"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+        </record>
+
+        <record id="account_move_line_supplier_2_2" model="account.invoice.line">
+            <field name="product_id" ref="producto3"/>
+            <field name="name">Portatil</field>
+            <field name="price_unit" eval="500"/>
+            <field name="invoice_line_tax_ids" eval="[(4, 4)]"/>
+            <field name="account_id" eval="356"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+        </record>
+
+        <record id="account_invoice_tax_supplier" model="account.invoice.tax">
+            <field name="name">21% IVA soportado (bienes corrientes)</field>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+            <field name="tax_id" eval="1"/>
+            <field name="account_id" eval="228"/>
+            <field name="amount" eval="420.00"/>
+        </record>
+
+    </data>
+</odoo>

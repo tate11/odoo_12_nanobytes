@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+
+        <record id="sale_order_form_quote" model="ir.ui.view">
+	        <field name="name">sale.order.form.payment</field>
+	        <field name="model">sale.order</field>
+	        <field name="inherit_id" ref="sale.view_order_form"/>
+	        <field name="arch" type="xml">
+	            <xpath expr="//group[@name='sales_person']" position="inside">
+		                <field name="active_more_fields" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="fiscal_name" attrs="{'invisible':[('active_more_fields', '=', False)]}" />
+		                <field name="comercial_name" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="frontis" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <!--field name="enterprise_name" attrs="{'invisible':[('active_more_fields', '=', False)]}"/-->
+		                <field name="adress" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="apartado_correos" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="city" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="postal_code" attrs="{'invisible':[('active_more_fields', '=', False)], 'required': False}"/>
+		                <field name="province" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="phone" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="phone2" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="fax" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="email" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="web_site" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="activity" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="responsable" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+		                <field name="productos_expone" attrs="{'invisible':[('active_more_fields', '=', False)]}"/>
+	            </xpath>
+	        </field>
+	    </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,2142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mod_200" model="account.financial.html.report">
+            <field name="name">Informe Modelo 200</field>
+            <field name="debit_credit" eval="False"/>
+            <field name="analytic" eval="False"/>
+            <field name="date_range" eval="True"/>
+            <field name="comparison" eval="False"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name="generated_menu_id" ref="menu_mod_200_report"/>
+        </record>
+
+        <record id="mod_200_title" model="account.financial.html.report.line">
+            <field name="name">BALANCE</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="0"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_resultado" model="account.financial.html.report.line">
+            <field name="name">Resultado Balance</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_title_1" model="account.financial.html.report.line">
+            <field name="name">TOTAL ACTIVO (A + B)</field>
+            <field name="code">modelo_200_balance_10000</field>
+            <field name="formulas">balance = modelo_200_balance_11000.balance + modelo_200_balance_12000.balance</field>
+            <field name="parent_id" ref="mod_200_resultado"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_title_2" model="account.financial.html.report.line">
+            <field name="name">A) ACTIVO NO CORRIENTE</field>
+            <field name="code">modelo_200_balance_11000</field>
+            <field name="formulas">balance = modelo_200_balance_11100.balance + modelo_200_balance_11200.balance + modelo_200_balance_11300.balance + modelo_200_balance_11400.balance + modelo_200_balance_11500.balance + modelo_200_balance_11600.balance + modelo_200_balance_11700.balance</field>
+            <field name="parent_id" ref="mod_200_title_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_0" model="account.financial.html.report.line">
+            <field name="name">I. Inmovilizado intangible</field>
+            <field name="code">modelo_200_balance_11100</field>
+            <field name="formulas">balance = modelo_200_balance_11110.balance + modelo_200_balance_11120.balance + modelo_200_balance_11130.balance + modelo_200_balance_11140.balance + modelo_200_balance_11150.balance + modelo_200_balance_11160.balance + modelo_200_balance_11170.balance</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_0_1" model="account.financial.html.report.line">
+            <field name="name">1. Desarrollo</field>
+            <field name="code">modelo_200_balance_11110</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '201%'),
+                                        '|', ('account_id.code', '=like', '2801%'),
+                                        ('account_id.code', '=like', '2901%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="0"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_0_2" model="account.financial.html.report.line">
+            <field name="name">2. Concesiones</field>
+            <field name="code">modelo_200_balance_11120</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '202%'),
+                                        '|', ('account_id.code', '=like', '2802%'),
+                                        ('account_id.code', '=like', '2902%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_0_3" model="account.financial.html.report.line">
+            <field name="name">3. Patentes, licencias, marcas y similares</field>
+            <field name="code">modelo_200_balance_11130</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '203%'),
+                                        '|', ('account_id.code', '=like', '2803%'),
+                                        ('account_id.code', '=like', '2903%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_200_row_0_4" model="account.financial.html.report.line">
+            <field name="name">4. Fondo de comercio</field>
+            <field name="code">modelo_200_balance_11140</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '204%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_0_5" model="account.financial.html.report.line">
+            <field name="name">5. Aplicaciones informáticas</field>
+            <field name="code">modelo_200_balance_11150</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '206%'),
+                                        '|', ('account_id.code', '=like', '2806%'),
+                                        ('account_id.code', '=like', '2906%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_0_6" model="account.financial.html.report.line">
+            <field name="name">6. Investigación</field>
+            <field name="code">modelo_200_balance_11160</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '200%'),
+                                        '|', ('account_id.code', '=like', '2800%'),
+                                        ('account_id.code', '=like', '2900%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_0_7" model="account.financial.html.report.line">
+            <field name="name">7. Otro inmovilizado intangible</field>
+            <field name="code">modelo_200_balance_11170</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '205%'),
+            							'|', ('account_id.code', '=like', '209%'),
+            							'|', ('account_id.code', '=like', '2805%'),
+            							('account_id.code', '=like', '2905%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_0"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_200_row_1" model="account.financial.html.report.line">
+            <field name="name">II. Inmovilizado material</field>
+            <field name="code">modelo_200_balance_11200</field>
+            <field name="formulas">balance = modelo_200_balance_11210.balance + modelo_200_balance_11220.balance + modelo_200_balance_11230.balance</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="3"/>
+        </record>
+
+
+		<record id="mod_200_row_1_1" model="account.financial.html.report.line">
+            <field name="name">1. Terrenos y construcciones</field>
+            <field name="code">modelo_200_balance_11210</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '210%'),
+            							'|', ('account_id.code', '=like', '211%'),
+            							'|', ('account_id.code', '=like', '2811%'),
+            							'|', ('account_id.code', '=like', '2910%'),
+            							('account_id.code', '=like', '2911%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_1"/>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="4"/>
+        </record>
+
+		<record id="mod_200_row_1_2" model="account.financial.html.report.line">
+            <field name="name">2. Instalaciones técnicas y otro inmovilizado material</field>
+            <field name="code">modelo_200_balance_11220</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="	['|', ('account_id.code', '=like', '212%'),
+            							 '|', ('account_id.code', '=like', '213%'),
+            							 '|', ('account_id.code', '=like', '214%'),
+            							 '|', ('account_id.code', '=like', '215%'),
+            							 '|', ('account_id.code', '=like', '216%'),
+            							 '|', ('account_id.code', '=like', '217%'),
+            							 '|', ('account_id.code', '=like', '218%'),
+            							 '|', ('account_id.code', '=like', '219%'),
+            							 '|', ('account_id.code', '=like', '2812%'),
+            							 '|', ('account_id.code', '=like', '2813%'),
+            							 '|', ('account_id.code', '=like', '2814%'),
+            							 '|', ('account_id.code', '=like', '2815%'),
+            							 '|', ('account_id.code', '=like', '2816%'),
+            							 '|', ('account_id.code', '=like', '2817%'),
+            							 '|', ('account_id.code', '=like', '2818%'),
+            							 '|', ('account_id.code', '=like', '2819%'),
+            							 '|', ('account_id.code', '=like', '2912%'),
+            							 '|', ('account_id.code', '=like', '2913%'),
+            							 '|', ('account_id.code', '=like', '2914%'),
+            							 '|', ('account_id.code', '=like', '2915%'),
+            							 '|', ('account_id.code', '=like', '2916%'),
+            							 '|', ('account_id.code', '=like', '2917%'),
+            							 '|', ('account_id.code', '=like', '2918%'),
+            							 ('account_id.code', '=like', '2919%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_1"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="4"/>
+        </record>
+
+		<record id="mod_200_row_1_3" model="account.financial.html.report.line">
+            <field name="name">3. Inmovilizado en curso y anticipos</field>
+            <field name="code">modelo_200_balance_11230</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '23%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_1"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_2" model="account.financial.html.report.line">
+            <field name="name">III. Inversiones inmobiliarias</field>
+            <field name="code">modelo_200_balance_11300</field>
+            <field name="formulas">balance = modelo_200_balance_11310.balance + modelo_200_balance_11320.balance</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_2_1" model="account.financial.html.report.line">
+            <field name="name">1. Terrenos</field>
+            <field name="code">modelo_200_balance_11310</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '220%'),
+                                        ('account_id.code', '=like', '2920%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_2"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_2_2" model="account.financial.html.report.line">
+            <field name="name">2. Construcciones</field>
+            <field name="code">modelo_200_balance_11320</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '221%'),
+                                        '|', ('account_id.code', '=like', '282%'),
+                                        ('account_id.code', '=like', '2921%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_2"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3" model="account.financial.html.report.line">
+            <field name="name">IV. Inversiones en empresas del grupo y asociadas a largo plazo</field>
+            <field name="code">modelo_200_balance_11400</field>
+            <field name="formulas">balance = modelo_200_balance_11410.balance + modelo_200_balance_11420.balance + modelo_200_balance_11430.balance + modelo_200_balance_11440.balance + modelo_200_balance_11450.balance + modelo_200_balance_11460.balance</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_3_1" model="account.financial.html.report.line">
+            <field name="name">1. Instrumentos de patrimonio</field>
+            <field name="code">modelo_200_balance_11410</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2403%'),
+                                        '|', ('account_id.code', '=like', '2404%'),
+                                        '|', ('account_id.code', '=like', '2493%'),
+                                        '|', ('account_id.code', '=like', '2494%'),
+                                        ('account_id.code', '=like', '293%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3_2" model="account.financial.html.report.line">
+            <field name="name">2. Créditos a empresas</field>
+            <field name="code">modelo_200_balance_11420</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2423%'),
+                                        '|', ('account_id.code', '=like', '2424%'),
+                                        '|', ('account_id.code', '=like', '2953%'),
+                                        ('account_id.code', '=like', '2954%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3_3" model="account.financial.html.report.line">
+            <field name="name">3. Valores representativos de deuda</field>
+            <field name="code">modelo_200_balance_11430</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2413%'),
+                                        '|', ('account_id.code', '=like', '2414%'),
+                                        '|', ('account_id.code', '=like', '2943%'),
+                                        ('account_id.code', '=like', '2944%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="14"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_11440</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_11440_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros activos financieros</field>
+            <field name="code">modelo_200_balance_11450</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_11450_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_3_6" model="account.financial.html.report.line">
+            <field name="name">6. Otras inversiones</field>
+            <field name="code">modelo_200_balance_11460</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_11460_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_3"/>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4" model="account.financial.html.report.line">
+            <field name="name">V. Inversiones financieras a largo plazo</field>
+            <field name="code">modelo_200_balance_11500</field>
+            <field name="formulas">balance = modelo_200_balance_11510.balance + modelo_200_balance_11520.balance + modelo_200_balance_11530.balance + modelo_200_balance_11540.balance + modelo_200_balance_11550.balance + modelo_200_balance_11560.balance</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_4_1" model="account.financial.html.report.line">
+            <field name="name">1. Instrumentos de patrimonio</field>
+            <field name="code">modelo_200_balance_11510</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2405%'),
+                                        '|', ('account_id.code', '=like', '2495%'),
+                                        '|', ('account_id.code', '=like', '250%'),
+                                        ('account_id.code', '=like', '259%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4_2" model="account.financial.html.report.line">
+            <field name="name">2. Créditos a terceros</field>
+            <field name="code">modelo_200_balance_11520</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2425%'),
+                                        '|', ('account_id.code', '=like', '252%'),
+                                        '|', ('account_id.code', '=like', '253%'),
+                                        '|', ('account_id.code', '=like', '254%'),
+                                        '|', ('account_id.code', '=like', '2955%'),
+                                        ('account_id.code', '=like', '298%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="19"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4_3" model="account.financial.html.report.line">
+            <field name="name">3. Valores representativos de deuda</field>
+            <field name="code">modelo_200_balance_11530</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '2415%'),
+                                        '|', ('account_id.code', '=like', '251%'),
+                                        '|', ('account_id.code', '=like', '2945%'),
+                                        ('account_id.code', '=like', '297%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_11540</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '255%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="21"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros activos financieros</field>
+            <field name="code">modelo_200_balance_11550</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '258%'),
+                                        ('account_id.code', '=like', '26%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="22"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_4_6" model="account.financial.html.report.line">
+            <field name="name">6. Otras inversiones</field>
+            <field name="code">modelo_200_balance_11560</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '257%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_4"/>
+            <field name="sequence" eval="23"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_5" model="account.financial.html.report.line">
+            <field name="name">VI. Activos por impuesto diferido</field>
+            <field name="code">modelo_200_balance_11600</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '474%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_6" model="account.financial.html.report.line">
+            <field name="name">VII. Deudores comerciales no corrientes</field>
+            <field name="code">modelo_200_balance_11700</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_11700_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_2"/>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <!--MI PARTE ACTIVO CORRIENTE-->
+
+        <record id="mod_200_title_4" model="account.financial.html.report.line">
+            <field name="name">B) ACTIVO CORRIENTE</field>
+            <field name="code">modelo_200_balance_12000</field>
+            <field name="parent_id" ref="mod_200_title_1"/>
+            <field name="formulas">balance = modelo_200_balance_12100.balance + modelo_200_balance_12200.balance + modelo_200_balance_12300.balance + modelo_200_balance_12400.balance + modelo_200_balance_12500.balance + modelo_200_balance_12600.balance + modelo_200_balance_12700.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_7" model="account.financial.html.report.line">
+            <field name="name">I. Activos no corrientes mantenidos para la venta</field>
+            <field name="code">modelo_200_balance_12100</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '580%'),
+                                        '|', ('account_id.code', '=like', '581%'),
+                                        '|', ('account_id.code', '=like', '582%'),
+                                        '|', ('account_id.code', '=like', '583%'),
+                                        '|', ('account_id.code', '=like', '584%'),
+                                        ('account_id.code', '=like', '599%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_8" model="account.financial.html.report.line">
+            <field name="name">II. Existencias</field>
+            <field name="code">modelo_200_balance_12200</field>
+            <field name="formulas">balance = modelo_200_balance_12210.balance + modelo_200_balance_12220.balance + modelo_200_balance_12230.balance + modelo_200_balance_12240.balance + modelo_200_balance_12250.balance + modelo_200_balance_12260.balance</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_8_1" model="account.financial.html.report.line">
+            <field name="name">1. Comerciales</field>
+            <field name="code">modelo_200_balance_12210</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '30%'),
+                                        ('account_id.code', '=like', '390%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="24"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_8_2" model="account.financial.html.report.line">
+            <field name="name">2. Materias primas y otros aprovisionamientos</field>
+            <field name="code">modelo_200_balance_12220</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '31%'),
+                                        '|', ('account_id.code', '=like', '32%'),
+                                        '|', ('account_id.code', '=like', '391%'),
+                                        ('account_id.code', '=like', '392%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="25"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_8_3" model="account.financial.html.report.line">
+            <field name="name">3. Productos en curso</field>
+            <field name="code">modelo_200_balance_12230</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '33%'),
+                                        '|', ('account_id.code', '=like', '34%'),
+                                        '|', ('account_id.code', '=like', '393%'),
+                                        ('account_id.code', '=like', '394%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="26"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_8_4" model="account.financial.html.report.line">
+            <field name="name">4. Productos terminados</field>
+            <field name="code">modelo_200_balance_12240</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '35%'),
+                                        ('account_id.code', '=like', '395%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="27"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_8_5" model="account.financial.html.report.line">
+            <field name="name">5. Subproductos, residuos y materiales recuperados</field>
+            <field name="code">modelo_200_balance_12250</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '36%'),
+                                        ('account_id.code', '=like', '396%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="28"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_8_6" model="account.financial.html.report.line">
+            <field name="name">6. Anticipos a proveedores</field>
+            <field name="code">modelo_200_balance_12260</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '407%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_8"/>
+            <field name="sequence" eval="29"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9" model="account.financial.html.report.line">
+            <field name="name">III. Deudores comerciales y otras cuentas a cobrar</field>
+            <field name="code">modelo_200_balance_12300</field>
+            <field name="formulas">balance = modelo_200_balance_12310.balance + modelo_200_balance_12320.balance + modelo_200_balance_12330.balance + modelo_200_balance_12340.balance + modelo_200_balance_12350.balance + modelo_200_balance_12360.balance + modelo_200_balance_12370.balance</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_9_1" model="account.financial.html.report.line">
+            <field name="name">1. Clientes por ventas y prestaciones de servicios</field>
+            <field name="code">modelo_200_balance_12310</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '430%'),
+                                        '|', ('account_id.code', '=like', '431%'),
+                                        '|', ('account_id.code', '=like', '432%'),
+                                        '|', ('account_id.code', '=like', '435%'),
+                                        '|', ('account_id.code', '=like', '436%'),
+                                        '|', ('account_id.code', '=like', '437%'),
+                                        '|', ('account_id.code', '=like', '490%'),
+                                        ('account_id.code', '=like', '4935%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="30"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_2" model="account.financial.html.report.line">
+            <field name="name">2. Clientes empresas del grupo y asociadas</field>
+            <field name="code">modelo_200_balance_12320</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '433%'),
+                                        '|', ('account_id.code', '=like', '434%'),
+                                        '|', ('account_id.code', '=like', '4933%'),
+                                        ('account_id.code', '=like', '4934%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="31"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_3" model="account.financial.html.report.line">
+            <field name="name">3. Deudores varios</field>
+            <field name="code">modelo_200_balance_12330</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '44%'),
+                                        '|', ('account_id.code', '=like', '5531%'),
+                                         ('account_id.code', '=like', '5533%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="32"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_4" model="account.financial.html.report.line">
+            <field name="name">4. Personal</field>
+            <field name="code">modelo_200_balance_12340</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '460%'),
+                                        ('account_id.code', '=like', '544%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="33"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_5" model="account.financial.html.report.line">
+            <field name="name">5. Activos por impuesto corriente</field>
+            <field name="code">modelo_200_balance_12350</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '4709%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="34"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_6" model="account.financial.html.report.line">
+            <field name="name">6. Otros créditos con las Administraciones Públicas</field>
+            <field name="code">modelo_200_balance_12360</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '4700%'),
+                                        '|', ('account_id.code', '=like', '4708%'),
+                                        '|', ('account_id.code', '=like', '471%'),
+                                        '|', ('account_id.code', '=like', '472%'),
+                                        ('account_id.code', '=like', '473%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="35"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_9_7" model="account.financial.html.report.line">
+            <field name="name">7. Accionistas (socios) por desembolsos exigidos</field>
+            <field name="code">modelo_200_balance_12370</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '5580%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_9"/>
+            <field name="sequence" eval="36"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10" model="account.financial.html.report.line">
+            <field name="name">IV. Inversiones en empresas del grupo y asociadas a corto plazo</field>
+            <field name="code">modelo_200_balance_12400</field>
+            <field name="formulas">balance = modelo_200_balance_12410.balance + modelo_200_balance_12420.balance + modelo_200_balance_12430.balance + modelo_200_balance_12440.balance + modelo_200_balance_12450.balance + modelo_200_balance_12460.balance</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_10_1" model="account.financial.html.report.line">
+            <field name="name">1. Instrumentos de patrimonio</field>
+            <field name="code">modelo_200_balance_12410</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5303%'),
+                                        '|', ('account_id.code', '=like', '5304%'),
+                                        '|', ('account_id.code', '=like', '5393%'),
+                                        '|', ('account_id.code', '=like', '5394%'),
+                                        ('account_id.code', '=like', '593%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="37"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10_2" model="account.financial.html.report.line">
+            <field name="name">2. Créditos a empresas</field>
+            <field name="code">modelo_200_balance_12420</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5323%'),
+                                        '|', ('account_id.code', '=like', '5324%'),
+                                        '|', ('account_id.code', '=like', '5343%'),
+                                        '|', ('account_id.code', '=like', '5344%'),
+                                        '|', ('account_id.code', '=like', '5953%'),
+                                        ('account_id.code', '=like', '5954%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="38"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10_3" model="account.financial.html.report.line">
+            <field name="name">3. Valores representativos de deuda</field>
+            <field name="code">modelo_200_balance_12430</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5313%'),
+                                        '|', ('account_id.code', '=like', '5314%'),
+                                        '|', ('account_id.code', '=like', '5333%'),
+                                        '|', ('account_id.code', '=like', '5334%'),
+                                        '|', ('account_id.code', '=like', '5943%'),
+                                        ('account_id.code', '=like', '5944%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="39"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_12440</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_12440_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="40"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros activos financieros</field>
+            <field name="code">modelo_200_balance_12450</field>
+            <field name="formulas">balance = -(l10n_es_full_balances_sum_12450.balance + l10n_es_full_debits_sum_12450.balance)</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="41"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_10_6" model="account.financial.html.report.line">
+            <field name="name">6. Otras inversiones</field>
+            <field name="code">modelo_200_balance_12460</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_12460_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_10"/>
+            <field name="sequence" eval="41"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11" model="account.financial.html.report.line">
+            <field name="name">V. Inversiones financieras a corto plazo</field>
+            <field name="code">modelo_200_balance_12500</field>
+            <field name="formulas">balance = modelo_200_balance_12510.balance + modelo_200_balance_12520.balance + modelo_200_balance_12530.balance + modelo_200_balance_12540.balance + modelo_200_balance_12550.balance + modelo_200_balance_12560.balance</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_11_1" model="account.financial.html.report.line">
+            <field name="name">1. Instrumentos de patrimonio</field>
+            <field name="code">modelo_200_balance_12510</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5305%'),
+                                        '|', ('account_id.code', '=like', '540%'),
+                                        '|', ('account_id.code', '=like', '5395%'),
+                                        ('account_id.code', '=like', '549%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="42"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11_2" model="account.financial.html.report.line">
+            <field name="name">2. Créditos a empresas</field>
+            <field name="code">modelo_200_balance_12520</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5325%'),
+                                        '|', ('account_id.code', '=like', '5345%'),
+                                        '|', ('account_id.code', '=like', '542%'),
+                                        '|', ('account_id.code', '=like', '543%'),
+                                        '|', ('account_id.code', '=like', '547%'),
+                                        '|', ('account_id.code', '=like', '5955%'),
+                                        ('account_id.code', '=like', '598%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="43"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11_3" model="account.financial.html.report.line">
+            <field name="name">3. Valores representativos de deuda</field>
+            <field name="code">modelo_200_balance_12530</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5315%'),
+                                        '|', ('account_id.code', '=like', '5335%'),
+                                        '|', ('account_id.code', '=like', '541%'),
+                                        '|', ('account_id.code', '=like', '546%'),
+                                        '|', ('account_id.code', '=like', '5945%'),
+                                        ('account_id.code', '=like', '597%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="44"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_12540</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5590%'),
+                                        ('account_id.code', '=like', '5593%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="45"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros activos financieros</field>
+            <field name="code">modelo_200_balance_12550</field>
+            <field name="formulas">balance = -(l10n_es_full_balances_sum_12550.balance + l10n_es_full_debits_sum_12550.balance)</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="46"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_11_6" model="account.financial.html.report.line">
+            <field name="name">6. Otras inversiones</field>
+            <field name="code">modelo_200_balance_12560</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_12560_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_11"/>
+            <field name="sequence" eval="47"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_12" model="account.financial.html.report.line">
+            <field name="name">VI. Periodificaciones a corto plazo</field>
+            <field name="code">modelo_200_balance_12600</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '480%'),
+                                        ('account_id.code', '=like', '567%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_13" model="account.financial.html.report.line">
+            <field name="name">VII. Efectivo y otros activos líquidos equivalentes</field>
+            <field name="code">modelo_200_balance_12700</field>
+            <field name="formulas">balance = modelo_200_balance_12710.balance + modelo_200_balance_12720.balance</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="14"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_14" model="account.financial.html.report.line">
+            <field name="name">1. Tesorería</field>
+            <field name="code">modelo_200_balance_12710</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '570%'),
+                                        '|', ('account_id.code', '=like', '571%'),
+                                        '|', ('account_id.code', '=like', '572%'),
+                                        '|', ('account_id.code', '=like', '573%'),
+                                        '|', ('account_id.code', '=like', '574%'),
+                                        ('account_id.code', '=like', '575%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="48"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_15" model="account.financial.html.report.line">
+            <field name="name">2. Otros activos líquidos equivalentes</field>
+            <field name="code">modelo_200_balance_12720</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '576%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_4"/>
+            <field name="sequence" eval="49"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_title_5" model="account.financial.html.report.line">
+            <field name="name">TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)</field>
+            <field name="code">modelo_200_balance_30000</field>
+            <field name="formulas">balance = modelo_200_balance_20000.balance + modelo_200_balance_31000.balance + modelo_200_balance_32000.balance</field>
+            <field name="parent_id" ref="mod_200_resultado"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_title_6" model="account.financial.html.report.line">
+            <field name="name">A) PATRIMONIO NETO</field>
+            <field name="code">modelo_200_balance_20000</field>
+            <field name="formulas">balance = modelo_200_balance_21000.balance + modelo_200_balance_22000.balance + modelo_200_balance_23000.balance</field>
+            <field name="parent_id" ref="mod_200_title_5"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_16" model="account.financial.html.report.line">
+            <field name="name">A-1) Fondos propios</field>
+            <field name="code">modelo_200_balance_21000</field>
+            <field name="formulas">balance = modelo_200_balance_21100.balance + modelo_200_balance_21200.balance + modelo_200_balance_21300.balance + modelo_200_balance_21400.balance + modelo_200_balance_21500.balance + modelo_200_balance_21600.balance + modelo_200_balance_21700.balance + modelo_200_balance_21800.balance + modelo_200_balance_21900.balance</field>
+            <field name="parent_id" ref="mod_200_title_6"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_16_1" model="account.financial.html.report.line">
+            <field name="name">I. Capital</field>
+            <field name="code">modelo_200_balance_21100</field>
+            <field name="formulas">balance = modelo_200_balance_21110.balance + modelo_200_balance_21120.balance</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="50"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_1_1" model="account.financial.html.report.line">
+            <field name="name">1. Capital escriturado</field>
+            <field name="code">modelo_200_balance_21110</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '100%'),
+                                        '|', ('account_id.code', '=like', '101%'),
+                                         ('account_id.code', '=like', '102%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_1_2" model="account.financial.html.report.line">
+            <field name="name">2. (Capital no exigido)</field>
+            <field name="code">modelo_200_balance_21120</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1030%'),
+                                        ('account_id.code', '=like', '1040%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_1"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_2" model="account.financial.html.report.line">
+            <field name="name">II. Prima de emisión</field>
+            <field name="code">modelo_200_balance_21200</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '110%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="51"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_3" model="account.financial.html.report.line">
+            <field name="name">III. Reservas</field>
+            <field name="code">modelo_200_balance_21300</field>
+            <field name="formulas">balance = modelo_200_balance_21310.balance + modelo_200_balance_21320.balance</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="52"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_3_1" model="account.financial.html.report.line">
+            <field name="name">1. Legal y estatutarias</field>
+            <field name="code">modelo_200_balance_21310</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '112%'),
+                                        ('account_id.code', '=like', '1141%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_3"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_3_2" model="account.financial.html.report.line">
+            <field name="name">2. Otras reservas</field>
+            <field name="code">modelo_200_balance_21320</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '113%'),
+                                        '|', ('account_id.code', '=like', '1140%'),
+                                        '|', ('account_id.code', '=like', '1142%'),
+                                        '|', ('account_id.code', '=like', '1143%'),
+                                        '|', ('account_id.code', '=like', '1144%'),
+                                        '|', ('account_id.code', '=like', '115%'),
+                                        ('account_id.code', '=like', '119%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_3"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_4" model="account.financial.html.report.line">
+            <field name="name">IV. (Acciones y participaciones en patrimonio propias)</field>
+            <field name="code">modelo_200_balance_21400</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '108%'),
+                                        ('account_id.code', '=like', '109%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="53"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_5" model="account.financial.html.report.line">
+            <field name="name">V. Resultados de ejercicios anteriores</field>
+            <field name="code">modelo_200_balance_21500</field>
+            <field name="formulas">balance = modelo_200_balance_21510.balance + modelo_200_balance_21520.balance</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="54"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_5_1" model="account.financial.html.report.line">
+            <field name="name">1. Remanente</field>
+            <field name="code">modelo_200_balance_21510</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '120%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_5"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_5_2" model="account.financial.html.report.line">
+            <field name="name">2. (Resultados negativos de ejercicios anteriores)</field>
+            <field name="code">modelo_200_balance_21520</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '121%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16_5"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="5"/>
+        </record>
+
+        <record id="mod_200_row_16_6" model="account.financial.html.report.line">
+            <field name="name">VI. Otras aportaciones de socios</field>
+            <field name="code">modelo_200_balance_21600</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '118%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="55"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_7" model="account.financial.html.report.line">
+            <field name="name">VII. Resultado del ejercicio</field>
+            <field name="code">modelo_200_balance_21700</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '129%'),
+                                        '|', ('account_id.code', '=like', '6%'),
+                                         ('account_id.code', '=like', '7%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="56"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_8" model="account.financial.html.report.line">
+            <field name="name">VIII. (Dividendo a cuenta)</field>
+            <field name="code">modelo_200_balance_21800</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '557%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="57"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_16_9" model="account.financial.html.report.line">
+            <field name="name">IX. Otros instrumentos de patrimonio neto</field>
+            <field name="code">modelo_200_balance_21900</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '111%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_16"/>
+            <field name="sequence" eval="58"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_17" model="account.financial.html.report.line">
+            <field name="name">A-2) Ajustes por cambios de valor</field>
+            <field name="code">modelo_200_balance_22000</field>
+            <field name="formulas">balance = modelo_200_balance_22100.balance + modelo_200_balance_22200.balance + modelo_200_balance_22300.balance + modelo_200_balance_22400.balance + modelo_200_balance_22500.balance</field>
+            <field name="parent_id" ref="mod_200_title_6"/>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_17_1" model="account.financial.html.report.line">
+            <field name="name">I. Activos financieros disponibles para la venta</field>
+            <field name="code">modelo_200_balance_22100</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '133%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_17"/>
+            <field name="sequence" eval="59"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_17_2" model="account.financial.html.report.line">
+            <field name="name">II. Operaciones de cobertura</field>
+            <field name="code">modelo_200_balance_22200</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1340%'),
+                                        ('account_id.code', '=like', '1341%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_17"/>
+            <field name="sequence" eval="60"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_17_3" model="account.financial.html.report.line">
+            <field name="name">III. Activos no corrientes y pasivos vinculados, mantenidos para la venta</field>
+            <field name="code">modelo_200_balance_22300</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '136%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_17"/>
+            <field name="sequence" eval="61"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_17_4" model="account.financial.html.report.line">
+            <field name="name">IV. Diferencia de conversión</field>
+            <field name="code">modelo_200_balance_22400</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '135%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_17"/>
+            <field name="sequence" eval="62"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_17_5" model="account.financial.html.report.line">
+            <field name="name">V. Otros</field>
+            <field name="code">modelo_200_balance_22500</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '137%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_17"/>
+            <field name="sequence" eval="63"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_18" model="account.financial.html.report.line">
+            <field name="name">A-3) Subvenciones, donaciones y legados recibidos</field>
+            <field name="code">modelo_200_balance_23000</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '130%'),
+                                        '|', ('account_id.code', '=like', '131%'),
+                                         ('account_id.code', '=like', '132%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_6"/>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_title_7" model="account.financial.html.report.line">
+            <field name="name">B) PASIVO NO CORRIENTE</field>
+            <field name="code">modelo_200_balance_31000</field>
+            <field name="formulas">balance = modelo_200_balance_31100.balance + modelo_200_balance_31200.balance + modelo_200_balance_31300.balance + modelo_200_balance_31400.balance + modelo_200_balance_31500.balance + modelo_200_balance_31600.balance + modelo_200_balance_31700.balance</field>
+            <field name="parent_id" ref="mod_200_title_5"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_19" model="account.financial.html.report.line">
+            <field name="name">I. Provisiones a largo plazo</field>
+            <field name="code">modelo_200_balance_31100</field>
+            <field name="formulas">balance = modelo_200_balance_31110.balance + modelo_200_balance_31120.balance + modelo_200_balance_31130.balance + modelo_200_balance_31140.balance</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_19_1" model="account.financial.html.report.line">
+            <field name="name">1. Obligaciones por prestaciones a largo plazo al personal</field>
+            <field name="code">modelo_200_balance_31110</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '140%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_19"/>
+            <field name="sequence" eval="64"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_19_2" model="account.financial.html.report.line">
+            <field name="name">2. Actuaciones medioambientales</field>
+            <field name="code">modelo_200_balance_31120</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '145%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_19"/>
+            <field name="sequence" eval="65"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_19_3" model="account.financial.html.report.line">
+            <field name="name">3. Provisiones por reestructuración</field>
+            <field name="code">modelo_200_balance_31130</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '146%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_19"/>
+            <field name="sequence" eval="66"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_19_4" model="account.financial.html.report.line">
+            <field name="name">4. Otras provisiones</field>
+            <field name="code">modelo_200_balance_31140</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '141%'),
+                                        '|', ('account_id.code', '=like', '142%'),
+                                        '|', ('account_id.code', '=like', '143%'),
+                                        ('account_id.code', '=like', '147%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_19"/>
+            <field name="sequence" eval="67"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_20" model="account.financial.html.report.line">
+            <field name="name">II. Deudas a largo plazo</field>
+            <field name="code">modelo_200_balance_31200</field>
+            <field name="formulas">balance = modelo_200_balance_31210.balance + modelo_200_balance_31220.balance + modelo_200_balance_31230.balance + modelo_200_balance_31240.balance + modelo_200_balance_31250.balance</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="19"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_20_1" model="account.financial.html.report.line">
+            <field name="name">1. Obligaciones y otros valores negociables</field>
+            <field name="code">modelo_200_balance_31210</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '177%'),
+                                        '|', ('account_id.code', '=like', '178%'),
+                                         ('account_id.code', '=like', '179%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_20"/>
+            <field name="sequence" eval="68"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_20_2" model="account.financial.html.report.line">
+            <field name="name">2. Deudas con entidades de crédito</field>
+            <field name="code">modelo_200_balance_31220</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1605%'),
+                                        ('account_id.code', '=like', '170%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_20"/>
+            <field name="sequence" eval="68"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_20_3" model="account.financial.html.report.line">
+            <field name="name">3. Acreedores por arrendamiento financiero</field>
+            <field name="code">modelo_200_balance_31230</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1625%'),
+                                        ('account_id.code', '=like', '174%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_20"/>
+            <field name="sequence" eval="69"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_20_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_31240</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '176%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_20"/>
+            <field name="sequence" eval="70"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_20_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros pasivos financieros	</field>
+            <field name="code">modelo_200_balance_31250</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1615%'),
+                                        '|', ('account_id.code', '=like', '1635%'),
+                                        '|', ('account_id.code', '=like', '171%'),
+                                        '|', ('account_id.code', '=like', '172%'),
+                                        '|', ('account_id.code', '=like', '173%'),
+                                        '|', ('account_id.code', '=like', '175%'),
+                                        '|', ('account_id.code', '=like', '180%'),
+                                        '|', ('account_id.code', '=like', '185%'),
+                                        ('account_id.code', '=like', '189%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_20"/>
+            <field name="sequence" eval="71"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_21" model="account.financial.html.report.line">
+            <field name="name">III. Deudas con empresas del grupo y asociadas a largo plazo</field>
+            <field name="code">modelo_200_balance_31300</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '1603%'),
+                                        '|', ('account_id.code', '=like', '1604%'),
+                                        '|', ('account_id.code', '=like', '1613%'),
+                                        '|', ('account_id.code', '=like', '1614%'),
+                                        '|', ('account_id.code', '=like', '1623%'),
+                                        '|', ('account_id.code', '=like', '1624%'),
+                                        '|', ('account_id.code', '=like', '1633%')
+                                        ,('account_id.code', '=like', '1634%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_22" model="account.financial.html.report.line">
+            <field name="name">IV. Pasivos por impuesto diferido</field>
+            <field name="code">modelo_200_balance_31400</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '479%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="21"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_23" model="account.financial.html.report.line">
+            <field name="name">V. Periodificaciones a largo plazo</field>
+            <field name="code">modelo_200_balance_31500</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '181%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="22"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_24" model="account.financial.html.report.line">
+            <field name="name">VI. Acreedores comerciales no corrientes</field>
+            <field name="code">modelo_200_balance_31600</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.tag_ids', '=', '%(balance_sheet_31600_account)d')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="23"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_25" model="account.financial.html.report.line">
+            <field name="name">VII. Deuda con características especiales a largo plazo</field>
+            <field name="code">modelo_200_balance_31700</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '15%'),
+                                        ('account_id.code', '=like', '5585%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_7"/>
+            <field name="sequence" eval="24"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_title_8" model="account.financial.html.report.line">
+            <field name="name">C) PASIVO CORRIENTE</field>
+            <field name="code">modelo_200_balance_32000</field>
+            <field name="formulas">balance = modelo_200_balance_32100.balance + modelo_200_balance_32200.balance + modelo_200_balance_32300.balance + modelo_200_balance_32400.balance + modelo_200_balance_32500.balance + modelo_200_balance_32600.balance + modelo_200_balance_32700.balance</field>
+            <field name="parent_id" ref="mod_200_title_5"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_26" model="account.financial.html.report.line">
+            <field name="name">I. Pasivos vinculados con activos no corrientes mantenidos para la venta</field>
+            <field name="code">modelo_200_balance_32100</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '585%'),
+                                        '|', ('account_id.code', '=like', '586%'),
+                                        '|', ('account_id.code', '=like', '587%'),
+                                        '|', ('account_id.code', '=like', '588%'),
+                                        ('account_id.code', '=like', '589%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="25"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_27" model="account.financial.html.report.line">
+            <field name="name">II. Provisiones a corto plazo</field>
+            <field name="code">modelo_200_balance_32200</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '499%'),
+                                        ('account_id.code', '=like', '529%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="26"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_28" model="account.financial.html.report.line">
+            <field name="name">III. Deudas a corto plazo</field>
+            <field name="code">modelo_200_balance_32300</field>
+            <field name="formulas">balance = modelo_200_balance_32310.balance + modelo_200_balance_32320.balance + modelo_200_balance_32330.balance + modelo_200_balance_32340.balance + modelo_200_balance_32350.balance</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="27"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_28_1" model="account.financial.html.report.line">
+            <field name="name">1. Obligaciones y otros valores negociables</field>
+            <field name="code">modelo_200_balance_32310</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '500%'),
+                                        '|', ('account_id.code', '=like', '501%'),
+                                        '|', ('account_id.code', '=like', '505%'),
+                                        ('account_id.code', '=like', '506%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_28"/>
+            <field name="sequence" eval="72"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_28_2" model="account.financial.html.report.line">
+            <field name="name">2. Deudas con entidades de crédito</field>
+            <field name="code">modelo_200_balance_32320</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5105%'),
+                                        '|', ('account_id.code', '=like', '520%'),
+                                        ('account_id.code', '=like', '527%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_28"/>
+            <field name="sequence" eval="73"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_28_3" model="account.financial.html.report.line">
+            <field name="name">3. Acreedores por arrendamiento financiero</field>
+            <field name="code">modelo_200_balance_32330</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5125%'),
+                                        ('account_id.code', '=like', '524%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_28"/>
+            <field name="sequence" eval="74"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_28_4" model="account.financial.html.report.line">
+            <field name="name">4. Derivados</field>
+            <field name="code">modelo_200_balance_32340</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '5595%'),
+                                        ('account_id.code', '=like', '5598%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_28"/>
+            <field name="sequence" eval="75"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_28_5" model="account.financial.html.report.line">
+            <field name="name">5. Otros pasivos financieros</field>
+            <field name="code">modelo_200_balance_32350</field>
+            <field name="formulas">balance = l10n_es_full_balances_sum_32350.balance + l10n_es_full_credits_sum_32350.balance</field>
+            <field name="parent_id" ref="mod_200_row_28"/>
+            <field name="sequence" eval="76"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_29" model="account.financial.html.report.line">
+            <field name="name">IV. Deudas con empresas del grupo y asociadas a corto plazo</field>
+            <field name="code">modelo_200_balance_32400</field>
+            <field name="formulas">balance = l10n_es_full_balances_sum_32400.balance + l10n_es_full_credits_sum_32400.balance</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="28"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_30" model="account.financial.html.report.line">
+            <field name="name">V. Acreedores comerciales y otras cuentas a pagar</field>
+            <field name="code">modelo_200_balance_32500</field>
+            <field name="formulas">balance = modelo_200_balance_32510.balance + modelo_200_balance_32520.balance + modelo_200_balance_32530.balance + modelo_200_balance_32540.balance + modelo_200_balance_32550.balance + modelo_200_balance_32560.balance + modelo_200_balance_32570.balance</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="29"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_30_1" model="account.financial.html.report.line">
+            <field name="name">1. Proveedores</field>
+            <field name="code">modelo_200_balance_32510</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '400%'),
+                                        '|', ('account_id.code', '=like', '401%'),
+                                        '|', ('account_id.code', '=like', '405%'),
+                                        ('account_id.code', '=like', '406%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="77"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_2" model="account.financial.html.report.line">
+            <field name="name">2. Proveedores, empresas del grupo y asociadas</field>
+            <field name="code">modelo_200_balance_32520</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '403%'),
+                                        ('account_id.code', '=like', '404%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="78"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_3" model="account.financial.html.report.line">
+            <field name="name">3. Acreedores varios</field>
+            <field name="code">modelo_200_balance_32530</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '41%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="79"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_4" model="account.financial.html.report.line">
+            <field name="name">4. Personal (remuneraciones pendientes de pago)</field>
+            <field name="code">modelo_200_balance_32540</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '465%'),
+                                        ('account_id.code', '=like', '466%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="80"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_5" model="account.financial.html.report.line">
+            <field name="name">5. Pasivos por impuesto corriente</field>
+            <field name="code">modelo_200_balance_32550</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '4752%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="81"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_6" model="account.financial.html.report.line">
+            <field name="name">6. Otras deudas con las Administraciones Públicas</field>
+            <field name="code">modelo_200_balance_32560</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '4750%'),
+                                        '|', ('account_id.code', '=like', '4751%'),
+                                        '|', ('account_id.code', '=like', '4758%'),
+                                        '|', ('account_id.code', '=like', '4759%'),
+                                        '|', ('account_id.code', '=like', '476%'),
+                                        ('account_id.code', '=like', '477%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="82"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_30_7" model="account.financial.html.report.line">
+            <field name="name">7. Anticipos de clientes</field>
+            <field name="code">modelo_200_balance_32570</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '438%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_30"/>
+            <field name="sequence" eval="82"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_200_row_31" model="account.financial.html.report.line">
+            <field name="name">VI. Periodificaciones a corto plazo</field>
+            <field name="code">modelo_200_balance_32600</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '485%'),
+                                        ('account_id.code', '=like', '568%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="30"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_32" model="account.financial.html.report.line">
+            <field name="name">VII. Deuda con características especiales a corto plazo</field>
+            <field name="code">modelo_200_balance_32700</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '195%'),
+                                        '|', ('account_id.code', '=like', '197%'),
+                                        '|', ('account_id.code', '=like', '199%'),
+                                        '|', ('account_id.code', '=like', '502%'),
+                                        ('account_id.code', '=like', '507%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_8"/>
+            <field name="sequence" eval="31"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_perdidas_ganancias" model="account.financial.html.report.line">
+            <field name="name">PÉRDIDAS Y GANANCIAS</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_resultado_per_gan" model="account.financial.html.report.line">
+            <field name="name">Resultado Pérdidas y ganancias</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_title_9" model="account.financial.html.report.line">
+            <field name="name">A) RESULTADO DE EXPLOTACIÓN (1+2+3+4+5+6+7+8+9+10+11+12)</field>
+            <field name="code">modelo_200_pyg_a</field>
+            <field name="formulas">balance = modelo_200_pyg_1.balance + modelo_200_pyg_2.balance + modelo_200_pyg_3.balance + modelo_200_pyg_4.balance + modelo_200_pyg_5.balance + modelo_200_pyg_6.balance + modelo_200_pyg_7.balance + modelo_200_pyg_8.balance + modelo_200_pyg_9.balance + modelo_200_pyg_10.balance + modelo_200_pyg_11.balance + modelo_200_pyg_12.balance</field>
+            <field name="parent_id" ref="mod_200_resultado_per_gan"/>
+            <field name="sequence" eval="0"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_row_33" model="account.financial.html.report.line">
+            <field name="name">1. Importe neto de la cifra de negocios</field>
+            <field name="code">modelo_200_pyg_1</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '700%'),
+                                        '|', ('account_id.code', '=like', '701%'),
+                                        '|', ('account_id.code', '=like', '702%'),
+                                        '|', ('account_id.code', '=like', '703%'),
+                                        '|', ('account_id.code', '=like', '704%'),
+                                        '|', ('account_id.code', '=like', '705%'),
+                                        '|', ('account_id.code', '=like', '706%'),
+                                        '|', ('account_id.code', '=like', '708%'),
+                                        ('account_id.code', '=like', '709%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_34" model="account.financial.html.report.line">
+            <field name="name">2. Variación de existencias de productos terminados y en curso de fabricación</field>
+            <field name="code">modelo_200_pyg_2</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '6930%'),
+                                        '|', ('account_id.code', '=like', '71%'),
+                                        ('account_id.code', '=like', '7930%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_35" model="account.financial.html.report.line">
+            <field name="name">3. Trabajos realizados por la empresa para su activo</field>
+            <field name="code">modelo_200_pyg_3</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '73%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_36" model="account.financial.html.report.line">
+            <field name="name">4. Aprovisionamientos</field>
+            <field name="code">modelo_200_pyg_4</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '600%'),
+                                        '|', ('account_id.code', '=like', '601%'),
+                                        '|', ('account_id.code', '=like', '602%'),
+                                        '|', ('account_id.code', '=like', '606%'),
+                                        '|', ('account_id.code', '=like', '607%'),
+                                        '|', ('account_id.code', '=like', '608%'),
+                                        '|', ('account_id.code', '=like', '609%'),
+                                        '|', ('account_id.code', '=like', '61%'),
+                                        '|', ('account_id.code', '=like', '6931%'),
+                                        '|', ('account_id.code', '=like', '6932%'),
+                                        '|', ('account_id.code', '=like', '6933%'),
+                                        '|', ('account_id.code', '=like', '7931%'),
+                                        '|', ('account_id.code', '=like', '7932%'),
+                                        ('account_id.code', '=like', '7933%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_37" model="account.financial.html.report.line">
+            <field name="name">5. Otros ingresos de explotación</field>
+            <field name="code">modelo_200_pyg_5</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '740%'),
+                                        '|', ('account_id.code', '=like', '747%'),
+                                        ('account_id.code', '=like', '75%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_38" model="account.financial.html.report.line">
+            <field name="name">6. Gastos de personal</field>
+            <field name="code">modelo_200_pyg_6</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '64%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_39" model="account.financial.html.report.line">
+            <field name="name">7. Otros gastos de explotación</field>
+            <field name="code">modelo_200_pyg_7</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '62%'),
+                                        '|', ('account_id.code', '=like', '631%'),
+                                        '|', ('account_id.code', '=like', '634%'),
+                                        '|', ('account_id.code', '=like', '636%'),
+                                        '|', ('account_id.code', '=like', '639%'),
+                                        '|', ('account_id.code', '=like', '65%'),
+                                        '|', ('account_id.code', '=like', '694%'),
+                                        '|', ('account_id.code', '=like', '695%'),
+                                        '|', ('account_id.code', '=like', '794%'),
+                                        ('account_id.code', '=like', '7954%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_40" model="account.financial.html.report.line">
+            <field name="name">8. Amortización del inmovilizado</field>
+            <field name="code">modelo_200_pyg_8</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '68%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_41" model="account.financial.html.report.line">
+            <field name="name">9. Imputación de subvenciones de inmovilizado no financiero y otras</field>
+            <field name="code">modelo_200_pyg_9</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '746%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_42" model="account.financial.html.report.line">
+            <field name="name">10. Excesos de provisiones</field>
+            <field name="code">modelo_200_pyg_10</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '7951%'),
+                                        '|', ('account_id.code', '=like', '7952%'),
+                                        ('account_id.code', '=like', '7955%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_43" model="account.financial.html.report.line">
+            <field name="name">11. Deterioro y resultado por enajenaciones del inmovilizado</field>
+            <field name="code">modelo_200_pyg_11</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '670%'),
+                                        '|', ('account_id.code', '=like', '671%'),
+                                        '|', ('account_id.code', '=like', '672%'),
+                                        '|', ('account_id.code', '=like', '690%'),
+                                        '|', ('account_id.code', '=like', '691%'),
+                                        '|', ('account_id.code', '=like', '770%'),
+                                        '|', ('account_id.code', '=like', '771%'),
+                                        '|', ('account_id.code', '=like', '772%'),
+                                        '|', ('account_id.code', '=like', '790%'),
+                                        '|', ('account_id.code', '=like', '791%'),
+                                        ('account_id.code', '=like', '792%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_44" model="account.financial.html.report.line">
+            <field name="name">12. Otros resultados</field>
+            <field name="code">modelo_200_pyg_12</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '678%'),
+                                        ('account_id.code', '=like', '778%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_9"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_title_10" model="account.financial.html.report.line">
+            <field name="name">B) RESULTADO FINANCIERO (13+14+15+16+17)</field>
+            <field name="code">modelo_200_pyg_b</field>
+            <field name="formulas">balance = modelo_200_pyg_13.balance + modelo_200_pyg_14.balance + modelo_200_pyg_15.balance + modelo_200_pyg_16.balance + modelo_200_pyg_17.balance</field>
+            <field name="parent_id" ref="mod_200_resultado_per_gan"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_row_45" model="account.financial.html.report.line">
+            <field name="name">13. Ingresos financieros</field>
+            <field name="code">modelo_200_pyg_13</field>
+            <field name="formulas">balance = modelo_200_pyg_13a.balance + modelo_200_pyg_13b.balance</field>
+            <field name="parent_id" ref="mod_200_title_10"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_45_1" model="account.financial.html.report.line">
+            <field name="name">a) Imputación de subvenciones, donaciones y legados de carácter financiero</field>
+            <field name="code">modelo_200_pyg_13a</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '746%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_45"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_45_2" model="account.financial.html.report.line">
+            <field name="name">b) Otros ingresos financieros</field>
+            <field name="code">modelo_200_pyg_13b</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '760%'),
+                                        '|', ('account_id.code', '=like', '761%'),
+                                        '|', ('account_id.code', '=like', '762%'),
+                                        ('account_id.code', '=like', '769%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_row_45"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_200_row_46" model="account.financial.html.report.line">
+            <field name="name">14. Gastos financieros</field>
+            <field name="code">modelo_200_pyg_14</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '660%'),
+                                        '|', ('account_id.code', '=like', '661%'),
+                                        '|', ('account_id.code', '=like', '662%'),
+                                        '|', ('account_id.code', '=like', '665%'),
+                                        ('account_id.code', '=like', '669%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_10"/>
+            <field name="sequence" eval="14"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_47" model="account.financial.html.report.line">
+            <field name="name">15. Variación de valor razonable en instrumentos financieros</field>
+            <field name="code">modelo_200_pyg_15</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '663%'),
+                                        ('account_id.code', '=like', '763%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_10"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_48" model="account.financial.html.report.line">
+            <field name="name">16. Diferencias de cambio</field>
+            <field name="code">modelo_200_pyg_16</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '668%'),
+                                        ('account_id.code', '=like', '768%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_10"/>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_49" model="account.financial.html.report.line">
+            <field name="name">17. Deterioro y resultado por enajenaciones de instrumentos financieros</field>
+            <field name="code">modelo_200_pyg_17</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '666%'),
+                                        '|', ('account_id.code', '=like', '667%'),
+                                        '|', ('account_id.code', '=like', '673%'),
+                                        '|', ('account_id.code', '=like', '675%'),
+                                        '|', ('account_id.code', '=like', '696%'),
+                                        '|', ('account_id.code', '=like', '697%'),
+                                        '|', ('account_id.code', '=like', '698%'),
+                                        '|', ('account_id.code', '=like', '699%'),
+                                        '|', ('account_id.code', '=like', '766%'),
+                                        '|', ('account_id.code', '=like', '773%'),
+                                        '|', ('account_id.code', '=like', '775%'),
+                                        '|', ('account_id.code', '=like', '796%'),
+                                        '|', ('account_id.code', '=like', '797%'),
+                                        '|', ('account_id.code', '=like', '798%'),
+                                        ('account_id.code', '=like', '799%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_10"/>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_title_11" model="account.financial.html.report.line">
+            <field name="name">C) RESULTADO ANTES DE IMPUESTOS (A+B)</field>
+            <field name="code">modelo_200_pyg_c</field>
+            <field name="formulas">balance = modelo_200_pyg_a.balance + modelo_200_pyg_b.balance</field>
+            <field name="parent_id" ref="mod_200_resultado_per_gan"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_row_50" model="account.financial.html.report.line">
+            <field name="name">18. Impuestos sobre beneficios</field>
+            <field name="code">modelo_200_pyg_18</field>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '6300%'),
+                                        '|', ('account_id.code', '=like', '6301%'),
+                                        '|', ('account_id.code', '=like', '633%'),
+                                        ('account_id.code', '=like', '638%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_resultado_per_gan"/>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_title_12" model="account.financial.html.report.line">
+            <field name="name">D) RESULTADO DEL EJERCICIO (C+18)</field>
+            <field name="code">modelo_200_pyg_d</field>
+            <field name="formulas">balance = modelo_200_pyg_c.balance + modelo_200_pyg_18.balance</field>
+            <field name="parent_id" ref="mod_200_resultado_per_gan"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_state_changes" model="account.financial.html.report.line">
+            <field name="name">ESTADO DE CAMBIOS EN EL PATRIMONIO NETO</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_total_income_and_expenses" model="account.financial.html.report.line">
+            <field name="name">Total de ingresos y gastos reconocidos</field>
+            <field name="code">modelo_200_patrimonio_355</field>
+            <field name="formulas">balance = modelo_200_pyg_d.balance + modelo_200_patrimonio_345.balance + modelo_200_patrimonio_354.balance</field>
+            <field name="financial_report_id" ref="mod_200"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="mod_200_title_13" model="account.financial.html.report.line">
+            <field name="name">Ingresos y gastos imputados directamente al patrimonio neto</field>
+            <field name="code">modelo_200_patrimonio_345</field>
+            <field name="formulas">balance = modelo_200_patrimonio_336.balance + modelo_200_patrimonio_339.balance + modelo_200_patrimonio_340.balance + modelo_200_patrimonio_341.balance + modelo_200_patrimonio_342.balance + modelo_200_patrimonio_343.balance + modelo_200_patrimonio_344.balance</field>
+            <field name="parent_id" ref="mod_200_total_income_and_expenses"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_row_51" model="account.financial.html.report.line">
+            <field name="name">Por valoración de instrumentos financieros</field>
+            <field name="code">modelo_200_patrimonio_336</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '800%'),
+                                        '|', ('account_id.code', '=like', '89%'),
+                                        '|', ('account_id.code', '=like', '900%'),
+                                        '|', ('account_id.code', '=like', '991%'),
+                                        ('account_id.code', '=like', '992%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_52" model="account.financial.html.report.line">
+            <field name="name">Por coberturas de flujos de efectivo</field>
+            <field name="code">modelo_200_patrimonio_339</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '810%'),
+                                        ('account_id.code', '=like', '910%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_53" model="account.financial.html.report.line">
+            <field name="name">Subvenciones, donaciones y legados recibidos</field>
+            <field name="code">modelo_200_patrimonio_340</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '94%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_54" model="account.financial.html.report.line">
+            <field name="name">Por ganancias y pérdidas actuariales y otros ajustes</field>
+            <field name="code">modelo_200_patrimonio_341</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '85%'),
+                                        ('account_id.code', '=like', '95%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_55" model="account.financial.html.report.line">
+            <field name="name">Por activos no corrientes y pasivos vinculados, mantenidos para la venta</field>
+            <field name="code">modelo_200_patrimonio_342</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '860%'),
+                                        ('account_id.code', '=like', '900%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_56" model="account.financial.html.report.line">
+            <field name="name">Diferencias de conversión</field>
+            <field name="code">modelo_200_patrimonio_343</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '820%'),
+                                        ('account_id.code', '=like', '920%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_57" model="account.financial.html.report.line">
+            <field name="name">Efecto impositivo</field>
+            <field name="code">modelo_200_patrimonio_344</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '8300%'),
+                                        '|', ('account_id.code', '=like', '8301%'),
+                                        '|', ('account_id.code', '=like', '833%'),
+                                        '|', ('account_id.code', '=like', '834%'),
+                                        '|', ('account_id.code', '=like', '835%'),
+                                        ('account_id.code', '=like', '838%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_13"/>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_title_14" model="account.financial.html.report.line">
+            <field name="name">Transferencias a la cuenta de pérdidas y ganancias</field>
+            <field name="code">modelo_200_patrimonio_354</field>
+            <field name="formulas">balance = modelo_200_patrimonio_346.balance + modelo_200_patrimonio_349.balance + modelo_200_patrimonio_350.balance + modelo_200_patrimonio_351.balance + modelo_200_patrimonio_352.balance + modelo_200_patrimonio_353.balance</field>
+            <field name="parent_id" ref="mod_200_total_income_and_expenses"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_200_row_58" model="account.financial.html.report.line">
+            <field name="name">Por valoración de instrumentos financieros</field>
+            <field name="code">modelo_200_patrimonio_346</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '802%'),
+                                        '|', ('account_id.code', '=like', '902%'),
+                                        '|', ('account_id.code', '=like', '993%'),
+                                        ('account_id.code', '=like', '994%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_59" model="account.financial.html.report.line">
+            <field name="name">Diferencias de conversión</field>
+            <field name="code">modelo_200_patrimonio_352</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '821%'),
+                                        ('account_id.code', '=like', '921%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_60" model="account.financial.html.report.line">
+            <field name="name">Efecto impositivo</field>
+            <field name="code">modelo_200_patrimonio_353</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '8301%'),
+                                        '|', ('account_id.code', '=like', '836%'),
+                                        ('account_id.code', '=like', '837%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_61" model="account.financial.html.report.line">
+            <field name="name">Por coberturas de flujo de efectivo</field>
+            <field name="code">modelo_200_patrimonio_349</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '812%'),
+                                        ('account_id.code', '=like', '912%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_62" model="account.financial.html.report.line">
+            <field name="name">Subvenciones, donaciones y legados recibidos</field>
+            <field name="code">modelo_200_patrimonio_350</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="[('account_id.code', '=like', '84%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="mod_200_row_63" model="account.financial.html.report.line">
+            <field name="name">Por activos no corrientes y pasivos vinculados, mantenidos para la venta</field>
+            <field name="code">modelo_200_patrimonio_351</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '862%'),
+                                        ('account_id.code', '=like', '902%')]"/>
+            <field name="groupby">account_id</field>
+            <field name="parent_id" ref="mod_200_title_14"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="2"/>
+        </record>
+
+    </data>
+</odoo>

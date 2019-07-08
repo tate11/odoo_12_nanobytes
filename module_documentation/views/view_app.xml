@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_documentation_app_tree">
+        <field name="name">documentation.app.tree</field>
+        <field name="model">documentation.app</field>
+        <field name="arch" type="xml">
+            <tree string="Apps">
+                <field name="name" />
+                <field name="category_id" />
+                <field name="language_id" />
+                <field name="owner_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_documentation_app_form">
+        <field name="name">documentation.app.form</field>
+        <field name="model">documentation.app</field>
+        <field name="arch" type="xml">
+            <form string="App">
+                <sheet>
+                    <field name="image_thumbnail" widget="image" class="oe_avatar"/>              
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="App name"/>
+                        <h1><field name="name" /></h1>
+                    </div>                    
+                    <group>
+                        <group>
+                            <field name="category_id" />
+                            <field name="owner_id" />
+                            <field name="have_documentation" />
+                            <field name="documentation_id" attrs="{'invisible': [('have_documentation', '=', 'no')]}" />
+                        </group>
+                        <group>
+                            <field name="language_id" />
+                            <field name="storage_type" />
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description" />
+                        </page>
+                        <page string="Binary File" name="binary_file" attrs="{'invisible': [('storage_type', '!=', 'binary')]}">
+                            <field name="name_file" invisible="1" />
+                            <field name="file" filename="name_file" />
+                        </page>
+                        <page string="Versions" name="versions" attrs="{'invisible': [('storage_type', '!=', 'binary')]}">
+                            <field name="version_ids" >
+                                <tree>
+                                    <field name="name" />  
+                                    <field name="name_file" invisible="1" />
+                                    <field name="file" filename="name_file" />
+                                    <field name="date_version" />
+                                </tree>
+                                <form>
+                                    <h1><field name="name" /></h1>
+                                    <group>
+                                        <group>
+                                            <field name="name_file" invisible="1" />
+                                            <field name="file" filename="name_file" />
+                                        </group>
+                                        <group>
+                                            <field name="date_version" />
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Classes" name="classes" attrs="{'invisible': [('storage_type', '!=', 'class')]}">
+                            <field name="class_ids" >
+                                <tree >
+                                    <field name="line_type" />
+                                    <field name="name" />
+                                </tree>
+                                <form>
+                                    <h1><field name="name" /></h1>
+                                    <group>
+                                        <group>
+                                            <field name="line_type" />
+                                        </group>
+                                        <group>
+                                        </group>
+                                    </group>
+                                    <field name="code" attrs="{'invisible': [('line_type', '!=', 'file')]}" />
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>                
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="documentation_app_search_view">
+        <field name="name">documentation.app</field>
+        <field name="model">documentation.app</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="category_id" />
+                <field name="language_id" />
+                <field name="owner_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="documentation_app_kanban_view" model="ir.ui.view">
+        <field name="name">App</field>
+        <field name="model">documentation.app</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id" />
+                <field name="image_thumbnail"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="language_id"/>
+                <field name="tag_ids"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-alt="record.name" t-att-src="kanban_image('documentation.app', 'image_thumbnail', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                <div class="o_kanban_tags_section">
+                                    <span class="oe_kanban_list_many2many">
+                                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    </span>
+                                </div> 
+                                <field name="language_id" />                            
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_documentation_app">
+        <field name="name">Apps</field>
+        <field name="res_model">documentation.app</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+</odoo>

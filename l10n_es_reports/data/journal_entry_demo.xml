@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- APUNTES Y ASIENTOS CONTABLES -->
+
+<odoo>
+    <data noupdate="1">
+
+        <!-- FV DE MAS DE 3.000€ -->
+
+        <record id="default_account_move_FV" model="account.move">
+            <field name="name">FV/2018/0001</field>
+            <field name="journal_id" eval="1"/>
+            <field name="state">posted</field>
+            <field name="date">08-11-2018</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_1" model="account.invoice">
+            <field name="move_id" ref="default_account_move_FV"/>
+        </record>
+
+        <record id="account_move_line_FV1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="193"/>
+            <field name="debit" eval="3130.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-25</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV"/>
+            <field name="invoice_id" ref="account_invoice_1"/>
+        </record>
+
+        <record id="account_move_line_FV2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">IVA 21% (Bienes)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="239"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="630.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-24</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV"/>
+            <field name="invoice_id" ref="account_invoice_1"/>
+            <field name="tax_line_id" eval="1"/>
+        </record>
+
+        <record id="account_move_line_FV3" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="480"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="2000.00"/>
+            <field name="quantity">1</field>
+            <field name="date_maturity">2018-10-25</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV"/>
+            <field name="invoice_id" ref="account_invoice_1"/>
+            <field name="tax_ids" eval="{(4, 1)}"/>
+        </record>
+
+        <record id="account_move_line_FV4" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Portatil</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="480"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="500.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-25</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV"/>
+            <field name="invoice_id" ref="account_invoice_1"/>
+            <field name="tax_ids" eval="{(4, 1)}"/>
+        </record>
+
+        <!-- FV CON IRPF DEL 1% -->
+
+        <record id="default_account_move_FV_irpf" model="account.move">
+            <field name="name">FV/2018/0002</field>
+            <field name="journal_id" eval="1"/>
+            <field name="state">posted</field>
+            <field name="date">11-11-2018</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_2" model="account.invoice">
+            <field name="move_id" ref="default_account_move_FV_irpf"/>
+        </record>
+
+        <record id="account_move_line_FV_irpf_0" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="193"/>
+            <field name="debit" eval="2400.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_irpf"/>
+            <field name="invoice_id" ref="account_invoice_2"/>
+        </record>
+
+        <record id="account_move_line_FV_irpf_1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">IVA 21% (Bienes)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="239"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="420.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_irpf"/>
+            <field name="invoice_id" ref="account_invoice_2"/>
+            <field name="tax_line_id" eval="1"/>
+        </record>
+
+        <record id="account_move_line_FV_irpf_2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Retenciones a cuenta IRPF 1%</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="229"/>
+            <field name="debit" eval="20.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_irpf"/>
+            <field name="invoice_id" ref="account_invoice_2"/>
+            <field name="tax_line_id" eval="84"/>
+        </record>
+
+        <record id="account_move_line_FV_irpf_3" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="480"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="2000.00"/>
+            <field name="quantity">1</field>
+            <field name="date_maturity">2018-10-25</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_irpf"/>
+            <field name="invoice_id" ref="account_invoice_2"/>
+            <field name="tax_ids" eval="{(4, 1), (4, 84)}"/>
+        </record>
+
+        <!-- FV CON ARRENDAMIENTO DEL 20% -->
+
+        <record id="default_account_move_FV_arren" model="account.move">
+            <field name="name">FV/2018/0003</field>
+            <field name="journal_id" eval="1"/>
+            <field name="state">posted</field>
+            <field name="date">12-11-2018</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_3" model="account.invoice">
+            <field name="move_id" ref="default_account_move_FV_arren"/>
+        </record>
+
+        <record id="account_move_line_FV_arren_0" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="193"/>
+            <field name="debit" eval="505.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_arren"/>
+            <field name="invoice_id" ref="account_invoice_3"/>
+        </record>
+
+        <record id="account_move_line_FV_arren_1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">IVA 21% (Bienes)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="239"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="105.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_arren"/>
+            <field name="invoice_id" ref="account_invoice_3"/>
+            <field name="tax_line_id" eval="1"/>
+        </record>
+
+        <record id="account_move_line_FV_arren_2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Retenciones a cuenta 20% (Arrendamientos)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="229"/>
+            <field name="debit" eval="100.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_arren"/>
+            <field name="invoice_id" ref="account_invoice_3"/>
+            <field name="tax_line_id" eval="77"/>
+        </record>
+
+        <record id="account_move_line_FV_arren_3" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Vivienda</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="480"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="500.00"/>
+            <field name="quantity">1</field>
+            <field name="date_maturity">2018-10-25</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_arren"/>
+            <field name="invoice_id" ref="account_invoice_3"/>
+            <field name="tax_ids" eval="{(4, 1), (4, 77)}"/>
+        </record>
+
+
+        <!-- FV CON EL REGIMEN INTRACOMUNITARIO -->
+
+        <record id="default_account_move_FV_intra" model="account.move">
+            <field name="name">FV/2018/0004</field>
+            <field name="journal_id" eval="1"/>
+            <field name="state">posted</field>
+            <field name="date">12-11-2018</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_4" model="account.invoice">
+            <field name="move_id" ref="default_account_move_FV_intra"/>
+        </record>
+
+        <record id="account_move_line_FV_intra_0" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="193"/>
+            <field name="debit" eval="2000.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-12-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_intra"/>
+            <field name="invoice_id" ref="account_invoice_4"/>
+        </record>
+
+        <record id="account_move_line_FV_intra_1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="481"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="2000.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_intra"/>
+            <field name="invoice_id" ref="account_invoice_4"/>
+            <field name="tax_ids" eval="{(4, 80)}"/>
+        </record>
+
+
+        <!-- FV CON EL REGIMEN EXTRACOMUNITARIO -->
+
+        <record id="default_account_move_FV_extra" model="account.move">
+            <field name="name">FV/2018/0005</field>
+            <field name="journal_id" eval="1"/>
+            <field name="state">posted</field>
+            <field name="date">12-11-2018</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_5" model="account.invoice">
+            <field name="move_id" ref="default_account_move_FV_extra"/>
+        </record>
+
+        <record id="account_move_line_FV_extra_0" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="193"/>
+            <field name="debit" eval="2000.00"/>
+            <field name="credit" eval="0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_extra"/>
+            <field name="invoice_id" ref="account_invoice_5"/>
+        </record>
+
+        <record id="account_move_line_FV_extra_1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="482"/>
+            <field name="debit" eval="0"/>
+            <field name="credit" eval="2000.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-12</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_FV_extra"/>
+            <field name="invoice_id" ref="account_invoice_5"/>
+            <field name="tax_ids" eval="{(4, 79)}"/>
+        </record>
+
+        <!-- FACT PAGADA-->
+
+        <record id="default_account_move_fact" model="account.move">
+            <field name="name">FACT/2018/0001</field>
+            <field name="journal_id" eval="2"/>
+            <field name="state">posted</field>
+            <field name="date">2018-11-13</field>
+            <field name="ref">REF</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_supplier_1" model="account.invoice">
+            <field name="move_id" ref="default_account_move_fact"/>
+        </record>
+
+        <record id="account_move_line_fact1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="4"/>
+
+            <field name="debit" eval="0.0"/>
+            <field name="credit" eval="2420.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact"/>
+            <field name="invoice_id" ref="account_invoice_supplier_1"/>
+        </record>
+
+        <record id="account_move_line_fact2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">21% IVA soportado (bienes corrientes)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="5"/>
+            <field name="debit" eval="420.00"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact"/>
+            <field name="invoice_id" ref="account_invoice_supplier_1"/>
+            <field name="tax_line_id" eval="4"/>
+        </record>
+
+        <record id="account_move_line_fact3" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="356"/>
+            <field name="debit" eval="2000"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-22</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact"/>
+            <field name="invoice_id" ref="account_invoice_supplier_1"/>
+            <field name="tax_ids" eval="{(4, 4)}"/>
+        </record>
+
+        <!-- BNK1 -->
+
+        <record id="default_account_move_bank" model="account.move">
+            <field name="name">BNK1/2018/0001</field>
+            <field name="ref">REF</field>
+            <field name="journal_id" eval="7"/>
+            <field name="state">posted</field>
+            <field name="partner_id" eval="1"/>
+		</record>
+
+        <record id="account_move_line_bn1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">FACT/2018/0001</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="632"/>
+            <field name="debit" eval="0.0"/>
+            <field name="credit" eval="2420.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_bank"/>
+        </record>
+
+        <record id="account_move_line_bn2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Pago a proveedor: FACT/2018/0001</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="188"/>
+            <field name="debit" eval="2420.00"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_bank"/>
+        </record>
+
+        <!-- FACT SIN PAGAR-->
+
+        <record id="default_account_move_fact_1" model="account.move">
+            <field name="name">FACT/2018/0002</field>
+            <field name="journal_id" eval="2"/>
+            <field name="state">posted</field>
+            <field name="date">2018-11-13</field>
+            <field name="ref">REFFF</field>
+		</record>
+
+        <!-- UNA VEZ CREADO LA ID SE LE AÑADE A LA FACTURA PARA QUE NO CHILLEE Y SE VINCULA-->
+
+        <record id="account_invoice_supplier_2" model="account.invoice">
+            <field name="move_id" ref="default_account_move_fact_1"/>
+        </record>
+
+        <record id="account_move_line_fact_1_1" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">/</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="4"/>
+            <field name="debit" eval="0.0"/>
+            <field name="credit" eval="2420.00"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact_1"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+        </record>
+
+        <record id="account_move_line_fact_1_2" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">21% IVA soportado (bienes corrientes)</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="5"/>
+            <field name="debit" eval="420.00"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-11-13</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact_1"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+            <field name="tax_line_id" eval="4"/>
+        </record>
+
+        <record id="account_move_line_fact_1_3" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Ordenador</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="356"/>
+            <field name="debit" eval="2000"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-22</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact_1"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+            <field name="tax_ids" eval="{(4, 4)}"/>
+        </record>
+
+        <record id="account_move_line_fact_1_4" model="account.move.line" context="{'check_move_validity': False}">
+            <field name="name">Portatil</field>
+            <field name="partner_id" eval="1"/>
+            <field name="account_id" eval="356"/>
+            <field name="debit" eval="500"/>
+            <field name="credit" eval="0.0"/>
+            <field name="quantity" eval="1"/>
+            <field name="date_maturity">2018-10-22</field>
+            <field name="blocked" eval="False"/>
+            <field name="move_id" ref="default_account_move_fact_1"/>
+            <field name="invoice_id" ref="account_invoice_supplier_2"/>
+            <field name="tax_ids" eval="{(4, 4)}"/>
+        </record>
+
+    </data>
+</odoo>

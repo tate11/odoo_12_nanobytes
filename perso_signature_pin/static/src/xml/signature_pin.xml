@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="opt_signature_pin" name="AskSignaturePin" customize_show="True" inherit_id="sale.sale_order_portal_template">
+        <xpath expr="//div[hasclass('o_portal_sale_sidebar')]" position="replace">
+            <div class="row mt16 o_portal_sale_sidebar">
+                    <!-- Sidebar -->
+                    <t t-call="portal.portal_record_sidebar">
+                        <t t-set="classes" t-value="'col-12 col-lg flex-lg-grow-0 d-print-none'"/>
+
+                        <t t-set="title">
+                            <h2 class="mb-0"><b t-field="sale_order.amount_total"/> </h2>
+                        </t>
+                        <t t-set="entries">
+                            <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                                <li class="list-group-item flex-grow-1">
+                                    <a t-if="sale_order.has_to_be_signed(True)" role="button" class="btn btn-primary btn-block mb8" id="boton_pin" data-toggle="modal" data-target="#modalaccept_sign" href="#" >
+                                        <i class="fa fa-check"/> Aceptar &amp; Firmar
+                                    </a>
+                                    <a t-elif="sale_order.has_to_be_paid(True)" role="button" class="btn btn-primary btn-block mb8" data-toggle="modal" data-target="#modalaccept_sign" href="#">
+                                        <i class="fa fa-check"/> <t t-if="not sale_order.signature">Aceptar &amp; Pagar</t><t t-else="">Pagar ahora</t>
+                                    </a>
+                                    <a t-else="" role="button" class="btn btn-primary btn-block mb8" href="#" >
+                                        <i class="fa fa-check"/> Pedido Firmado
+                                    </a>
+                                    <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                        <div class="btn-group flex-grow-1 mr-1 mb-1">
+                                            <a class="btn btn-secondary btn-block o_download_btn" t-att-href="sale_order.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Descargar</a>
+                                        </div>
+                                        <div class="btn-group flex-grow-1 mb-1">
+                                            <a class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print" t-att-href="sale_order.get_portal_url(report_type='pdf')" id="print_invoice_report" title="Print" target="_blank"><i class="fa fa-print"/> Imprimir</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
+                                    <ul class="nav flex-column bs-sidenav"></ul>
+                                </li>
+
+                                <t t-if="not sale_order.is_expired and sale_order.state in ['draft', 'sent']">
+                                    <li t-if="sale_order.remaining_validity_days &gt; 0" class="list-group-item">
+                                        <small><b class="text-muted">Esta oferta expira en</b></small>
+                                        <div class="day_counter">
+                                            <i class="fa fa-clock-o" aria-title="Dates" title="Dates"></i>
+                                            <t t-esc="sale_order.remaining_validity_days"/>
+                                            <t t-if="sale_order.remaining_validity_days &gt; 1">días</t><t t-else="">día</t>
+                                        </div>
+                                    </li>
+                                    <li t-if="sale_order.amount_undiscounted &gt; sale_order.amount_untaxed" class="list-group-item flex-grow-1">
+                                        <small><b class="text-muted">Your advantage</b></small>
+                                        <small>
+                                            <b t-field="sale_order.amount_undiscounted"
+                                                t-options='{"widget": "monetary", "display_currency": sale_order.pricelist_id.currency_id}'
+                                                style="text-decoration: line-through"
+                                                class="d-block mt-1"/>
+                                        </small>
+                                        <t t-if="sale_order.amount_untaxed == sale_order.amount_total">
+                                            <h4 t-field="sale_order.amount_total" class="text-success"/>
+                                        </t>
+                                        <t t-else="">
+                                            <h4 t-field="sale_order.amount_untaxed" class="text-success mb-0"/>
+                                            <small>(<span t-field="sale_order.amount_total"/> Incl. tax)</small>
+                                        </t>
+                                    </li>
+                                </t>
+
+                                <li t-if="sale_order.user_id" class="list-group-item flex-grow-1">
+                                    <div class="small mb-1"><strong class="text-muted">Your Contact</strong></div>
+                                    <div class="row flex-nowrap">
+                                        <div class="col flex-grow-0 pr-2">
+                                            <img class="rounded-circle mr4 float-left o_portal_contact_img" t-if="sale_order.user_id.image" t-att-src="image_data_uri(sale_order.user_id.image)" alt="Contact"/>
+                                            <img class="rounded-circle mr4 float-left o_portal_contact_img" t-if="not sale_order.user_id.image" src="/web/static/src/img/placeholder.png" alt="Contact"/>
+                                        </div>
+                                        <div class="col pl-0" style="min-width: 150px">
+                                            <span t-field="sale_order.user_id" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                            <a href="#discussion" class="small"><i class="fa fa-comment"></i> Send message</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </t>
+                    </t>
+
+                    <!-- Page content -->
+                    <div id="quote_content" class="col-12 col-lg justify-content-end">
+
+                        <!-- modal relative to the actions sign and pay -->
+                        <div class="modal fade" id="modalaccept_sign" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form id="accept2" method="POST" t-att-data-order-id="sale_order.id" t-att-data-token="sale_order.access_token" class="js_accept_json modal-content js_website_submit_form" >
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" id="order_payment_type" name="tipo_pago" t-att-value="sale_order.require_payment"/>
+                                    <input type="hidden" id="bool_active_more_fields" name="active_more_fields" t-att-value="sale_order.active_more_fields"/>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Validar Pedido</h4>
+                                        <button type="reset" class="close" data-dismiss="modal" aria-label="Close">&amp;times;</button>
+                                    </div>
+                                    <div class="modal-body" id="sign-dialog">
+                                        <p style="color: red; background-color: #E0E0E0; padding: 10px; border-radius: 5px;" class="warningmes">
+                                            <span>Acabamos de enviaros un correo a <b t-field="sale_order.partner_id.email"/> con el PIN necesario para firmar.</span>
+                                            <span> Por favor, verifica su correo en orden a proceder y no cierre esta ventana.</span>
+                                            <span id="warmess"> Si no os ha llegado ningún correo pincha <a href="#" id="resent" ><b>aquí</b></a> para reenviar. </span>
+                                        </p>
+                                        <p>
+                                            <span>El cliente debe completar los siguientes campos para obtener los datos del catálogo, es responsabilidad del cliente proporcionarlos y asegurarse de que todos los datos sean correctos. </span>
+                                        </p>
+                                        <p>
+                                            <span>Estoy de acuerdo en que al firmar con PIN esta propuesta, yo
+                                                acepto en nombre de </span><b t-field="sale_order.partner_id.commercial_partner_id"/><span>, para un total de </span>
+                                            <b data-id="total_amount" t-field="sale_order.amount_total"
+                                              t-options='{"widget": "monetary", "display_currency": sale_order.pricelist_id.currency_id}'/>
+                                            <span>con términos de pago: </span><b t-field="sale_order.payment_term_id"/>.
+                                        </p>
+                                        <div t-if="sale_order.active_more_fields" class="form-group row mt32">
+                                            <div class="col-md-6" id="signer_fiscal_name">
+                                                <label class="control-label" for="fiscal_name" required="true">Nombre Fiscal:</label>
+                                                <input type="text" name="signer_fiscal_name" id="fiscal_name" class="form-control" required="true"/>
+                                            </div>
+                                            <div class="col-md-6" id="signer_comercial_name" >
+                                                <label class="control-label" for="comercial_name" required="true"> Nombre Comercial:</label>
+                                                <input type="text" name="signer_comercial_name" id="comercial_name" class="form-control" required="true"/>
+                                            </div>                        
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_frontis" class="form-group">
+                                            <label class="control-label" for="frontis">Frontis (solo si ha contratado un stand modular):</label>
+                                            <input type="text" name="signer_frontis" id="frontis" class="form-control"/>
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_adress" class="form-group">
+                                            <label class="control-label" for="adress" required="true">Dirección:</label>
+                                            <input type="text" name="signer_adress" id="adress" class="form-control" required="true"/>
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_apartado_correos" class="form-group required" required="false">
+                                            <label class="control-label" for="apartado_correos">Apartado de Correos:</label>
+                                            <input type="text" name="signer_apartado_correos" id="apartado_correos" class="form-control"/>
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_city" class="form-group">
+                                            <label class="control-label" for="city" required="true">Ciudad:</label>
+                                            <input type="text" name="signer_city" id="city" class="form-control" required="true"/>
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_postal_code" class="form-group">
+                                            <label class="control-label" for="postal_code" required="true">Código Postal:</label>
+                                            <input type="text" name="signer_postal_code" id="postal_code" class="form-control" required="true"/>
+                                        </div>
+                                        <div t-if="sale_order.active_more_fields" id="signer_province" class="form-group">
+                                            <label class="control-label" for="province" required="true">Provinica:</label>
+                                            <input type="text" name="signer_province" id="province" class="form-control" required="true"/>
+                                        </div>
+                                        
+                                        <div t-if="sale_order.active_more_fields" class="form-group row mt32">
+                                            <div class="col-md-6" id="signer_phone">
+                                                <label class="control-label" for="phone" required="true">Teléfono Móvil:</label>
+                                                <input type="text" name="signer_phone" id="phone" class="form-control" required="true"/>
+                                            </div>
+                                            <div class="col-md-6" id="signer_phone2">
+                                                <label class="control-label" for="phone2">Teléfono 2:</label>
+                                                <input type="text" name="signer_phone2" id="phone2" class="form-control"/>
+                                            </div>                    
+                                        </div>
+                                        
+                                        <div t-if="sale_order.active_more_fields" class="form-group row mt32">
+                                            <div class="col-md-6" id="signer_email">
+                                                <label class="control-label" for="email" required="true">Email:</label>
+                                                <input type="text" name="signer_email" id="email" class="form-control" required="true"/>
+                                            </div>
+                                            <div class="col-md-6" id="signer_web_site">
+                                                <label class="control-label" for="web_site">Sitio Web:</label>
+                                                <input type="text" name="signer_web_site" id="web_site" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div t-if="sale_order.active_more_fields" class="row mt32">
+                                            <div class="col-md-6" id="signer_activity">
+                                                <label class="control-label" for="activity" required="true">Actividad:</label>
+                                                <input type="text" name="signer_activity" id="activity" class="form-control" required="true"/>
+                                            </div>
+                                            <div class="col-md-6" id="signer_responsable">
+                                                <label class="control-label" for="responsable" required="true">Responsable:</label>
+                                                <input type="text" name="signer_responsable" id="responsable" class="form-control" required="true"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div t-if="sale_order.active_more_fields" id="signer_productos_expone">
+                                            <label class="control-label" for="productos_expone" required="true">Productos que expone:</label>
+                                            <input type="text" name="signer_productos_expone" id="productos_expone" class="form-control" required="true"/>
+                                        </div>
+                                        <div id="signer" class="form-group">
+                                            <label class="control-label" for="name" required="true">Tu Nombre:</label>
+                                            <input type="text" name="signer" id="name" class="form-control" required="true"/>
+                                        </div>
+                                        <div id="signer_pin" class="form-group">
+                                            <label class="control-label" for="name" required="true">Tu PIN:</label>
+                                            <input type="number" name="signer_pin" id="pin" class="form-control" required="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div id="modalconfirm">
+                                            <button id="boton_submit" type="submit" t-attf-class="btn btn-primary">Firmar &amp; Confirmar</button> o
+                                            <button type="button" class="btn btn-link" data-dismiss="modal" style="padding: 0">Cancelar</button>
+                                        </div>
+                                        <div t-if="sale_order.require_payment">
+                                            <button type="submit" t-attf-class="btn btn-primary" data-target="#modalaccept">Continuar</button> o
+                                            <button type="button" class="btn btn-link" data-dismiss="modal" style="padding: 0">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- modal relative to the action reject -->
+                        <div role="dialog" class="modal fade" id="modaldecline">
+                            <div class="modal-dialog">
+                                <form id="decline" method="POST" t-attf-action="/my/orders/#{sale_order.id}/decline?access_token=#{sale_order.access_token}" class="modal-content">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <header class="modal-header">
+                                        <h4 class="modal-title">Reject This Quotation</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&amp;times;</button>
+                                    </header>
+                                    <main class="modal-body">
+                                        <p>
+                                            Tell us why you are refusing this quotation, this will help us improve our services.
+                                        </p>
+                                        <textarea rows="4" name="decline_message" required="" placeholder="Your feedback..." class="form-control" />
+                                    </main>
+                                    <footer class="modal-footer">
+                                        <button type="submit" t-att-id="sale_order.id" class="btn btn-danger"><i class="fa fa-times"></i> Reject</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                    </footer>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- status messages -->
+                        <div t-if="message == 'sign_ok'" class="alert alert-success alert-dismissable d-print-none" role="status">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">&amp;times;</button>
+                            <strong>Thank You!</strong><br/>
+                            <t t-if="message == 'sign_ok' and sale_order.state in ['sale', 'done']">Your order has been confirmed.</t>
+                            <t t-elif="message == 'sign_ok' and sale_order.has_to_be_paid()">Your order has been signed but still needs to be paid to be confirmed.</t>
+                            <t t-else="">Your order has been signed.</t>
+                        </div>
+
+                        <div t-if="message == 'cant_reject' and sale_order.has_to_be_signed()" class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">&amp;times;</button>
+                            Your order is not in a state to be rejected.
+                        </div>
+
+                        <t t-if="sale_order.transaction_ids">
+                            <t t-call="payment.payment_confirmation_status">
+                                <t t-set="payment_tx_id" t-value="sale_order.get_portal_last_transaction()"/>
+                                <t t-set="reference" t-value="sale_order.reference"/>
+                            </t>
+                        </t>
+
+                        <div t-if="sale_order.state == 'cancel'" class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">&amp;times;</button>
+                            <strong>This quotation has been canceled.</strong> <a role="button" href="#discussion"><i class="fa fa-comment"/> Contact us to get a new quotation.</a>
+                        </div>
+
+                        <div t-if="sale_order.state == 'draft'" class="alert alert-warning alert-dismissable d-print-none" role="status">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">&amp;times;</button>
+                            <strong>This is a draft quotation.</strong> <a role="button" href="#discussion"><i class="fa fa-comment"/> Contact us to get the final version.</a>
+                        </div>
+
+                        <div t-if="sale_order.is_expired" class="alert alert-warning alert-dismissable d-print-none" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">&amp;times;</button>
+                            <strong>This offer expired!</strong> <a role="button" href="#discussion"><i class="fa fa-comment"/> Contact us to get a new quotation.</a>
+                        </div>
+
+                        <!-- main content -->
+                        <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}">
+                            <div t-call="sale.sale_order_portal_content"/>
+                        </div>
+
+                        <!-- bottom actions -->
+                        <div t-if="sale_order.has_to_be_signed(True) or sale_order.has_to_be_paid(True)" class="row justify-content-center text-center d-print-none pt-1 pb-4">
+                            <t t-if="sale_order.has_to_be_signed(True)">
+                                <div class="col-sm-auto mt8">
+                                    <a role="button" class="btn btn-primary" id="boton_pin2" data-toggle="modal" data-target="#modalaccept_sign" href="#"><i class="fa fa-check"/> Accept &amp; Sign</a>
+                                </div>
+                                <div class="col-sm-auto mt8">
+                                    <a role="button" class="btn btn-secondary" href="#discussion"><i class="fa fa-comment"/> Feedback</a>
+                                </div>
+                                <div class="col-sm-auto mt8">
+                                    <a role="button" class="btn btn-danger" data-toggle="modal" data-target="#modaldecline" href="#"> <i class="fa fa-times"/> Reject</a>
+                                </div>
+                            </t>
+                            <div t-elif="sale_order.has_to_be_paid(True)" class="col-sm-auto mt8">
+                                <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#modalaccept_sign" href="#">
+                                    <i class="fa fa-check"/> <t t-if="not sale_order.signature">Accept &amp; Pay</t><t t-else="">Pay now</t>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- chatter -->
+                        <div id="sale_order_communication" class="mt-4">
+                            <h2>Communication</h2>
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="sale_order"/>
+                            </t>
+                        </div>
+                    </div><!-- // #quote_content -->
+            </div>
+        </xpath>
+    </template>
+
+
+</odoo>

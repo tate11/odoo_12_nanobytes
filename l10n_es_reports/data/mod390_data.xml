@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mod_390" model="account.financial.html.report">
+            <field name="name">Informe Modelo 390</field>
+            <field name="debit_credit" eval="False"/>
+            <field name="analytic" eval="False"/>
+            <field name="date_range" eval="True"/>
+            <field name="comparison" eval="False"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name="generated_menu_id" ref="menu_mod_390_report"/>
+        </record>
+
+        <record id="mod_390_title_1" model="account.financial.html.report.line">
+            <field name="name">Régimen General</field>
+            <field name="code">aeat_mod_390_title_1</field>
+            <field name="financial_report_id" ref="mod_390"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_390_title_2" model="account.financial.html.report.line">
+            <field name="name">IVA devengado</field>
+            <field name="code">aeat_mod_390_title_2</field>
+            <field name="parent_id" ref="mod_390_title_1"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2"/>
+        </record>
+
+
+        <record id="mod_390_title_3" model="account.financial.html.report.line">
+            <field name="name">Régimen ordinario</field>
+            <field name="code">aeat_mod_390_title_3</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_01" model="account.financial.html.report.line">
+            <field name="name">[01] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_01</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_01_03')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_02" model="account.financial.html.report.line">
+            <field name="name">[02] Cuota devengada 4%</field>
+            <field name="code">aeat_mod_390_02</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_01_03')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_03" model="account.financial.html.report.line">
+            <field name="name">[03] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_03</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_04_06')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_04" model="account.financial.html.report.line">
+            <field name="name">[04] Cuota 10%</field>
+            <field name="code">aeat_mod_390_04</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_04_06')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_05" model="account.financial.html.report.line">
+            <field name="name">[07] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_05</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_07_09')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_06" model="account.financial.html.report.line">
+            <field name="name">[09] Cuota 21%</field>
+            <field name="code">aeat_mod_390_06</field>
+            <field name="parent_id" ref="mod_390_title_3"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_07_09')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+        <record id="mod_390_title_4" model="account.financial.html.report.line">
+            <field name="name">Adquisiciones intracomunitarias de bienes</field>
+            <field name="code">aeat_mod_390_title_4</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_21" model="account.financial.html.report.line">
+            <field name="name">[21] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_21</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_ids','=',29),('tax_ids','=',32)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_22" model="account.financial.html.report.line">
+            <field name="name">[22] Cuota 4%</field>
+            <field name="code">aeat_mod_390_22</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_line_id','=',28),('tax_line_id','=',31)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_23" model="account.financial.html.report.line">
+            <field name="name">[23] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_23</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_ids','=',35),('tax_ids','=',38)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_24" model="account.financial.html.report.line">
+            <field name="name">[24] Cuota 10%</field>
+            <field name="code">aeat_mod_390_24</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_line_id','=',34),('tax_line_id','=',37)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_25" model="account.financial.html.report.line">
+            <field name="name">[25] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_25</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_ids','=',11),('tax_ids','=',14)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_26" model="account.financial.html.report.line">
+            <field name="name">[26] Cuota 21%</field>
+            <field name="code">aeat_mod_390_26</field>
+            <field name="parent_id" ref="mod_390_title_4"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), '|',('tax_line_id','=',10),('tax_line_id','=',13)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+        <record id="mod_390_title_5" model="account.financial.html.report.line">
+            <field name="name">Adquisiciones intracomunitarias de servicios</field>
+            <field name="code">aeat_mod_390_title_5</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_545" model="account.financial.html.report.line">
+            <field name="name">[545] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_545</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',98)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_546" model="account.financial.html.report.line">
+            <field name="name">[546] Cuota 4%</field>
+            <field name="code">aeat_mod_390_546</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',96)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_547" model="account.financial.html.report.line">
+            <field name="name">[547] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_547</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',95)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_548" model="account.financial.html.report.line">
+            <field name="name">[548] Cuota 10%</field>
+            <field name="code">aeat_mod_390_548</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',93)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_551" model="account.financial.html.report.line">
+            <field name="name">[551] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_551</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), ('tax_ids','=',8)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_552" model="account.financial.html.report.line">
+            <field name="name">[552] Cuota 21%</field>
+            <field name="code">aeat_mod_390_552</field>
+            <field name="parent_id" ref="mod_390_title_5"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']), ('tax_line_id','=',6)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+        <record id="mod_390_title_6" model="account.financial.html.report.line">
+            <field name="name">Otros supuestos de inversión de sujeto pasivo</field>
+            <field name="code">aeat_mod_390_title_6</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_27" model="account.financial.html.report.line">
+            <field name="name">[27] Base imponible</field>
+            <field name="code">aeat_mod_390_27</field>
+            <field name="parent_id" ref="mod_390_title_6"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_12_13')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_28" model="account.financial.html.report.line">
+            <field name="name">[28] Cuota</field>
+            <field name="code">aeat_mod_390_28</field>
+            <field name="parent_id" ref="mod_390_title_6"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_12_13')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_7" model="account.financial.html.report.line">
+            <field name="name">Modificación de bases y cuotas</field>
+            <field name="code">aeat_mod_390_title_7</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <!--Invisible line, used for the computation of casilla 14-->
+        <record id="mod_390_casilla_29_sale" model="account.financial.html.report.line">
+            <field name="name">[29] Base imponible - SALE</field>
+            <field name="code">aeat_mod_390_29_sale</field>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_14_15_sale')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <!--Invisible line, used for the computation of casilla 14-->
+        <record id="mod_390_casilla_29_purchase" model="account.financial.html.report.line">
+            <field name="name">[29] Base imponible - PURCHASE</field>
+            <field name="code">aeat_mod_390_29_purchase</field>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_14_15_purchase')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_29" model="account.financial.html.report.line">
+            <field name="name">[29] Base imponible</field>
+            <field name="code">aeat_mod_390_29</field>
+            <field name="parent_id" ref="mod_390_title_7"/>
+            <field name="formulas">balance = aeat_mod_390_29_sale.balance - aeat_mod_390_29_purchase.balance</field>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <!--Invisible line, used for the computation of casilla 15-->
+        <record id="mod_390_casilla_30_sale" model="account.financial.html.report.line">
+            <field name="name">[30] Cuota - SALE</field>
+            <field name="code">aeat_mod_390_30_sale</field>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_14_15_sale')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="19"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <!--Invisible line, used for the computation of casilla 14-->
+        <record id="mod_390_casilla_30_purchase" model="account.financial.html.report.line">
+            <field name="name">[30] Cuota - PURCHASE</field>
+            <field name="code">aeat_mod_390_30_purchase</field>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_14_15_purchase')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_30" model="account.financial.html.report.line">
+            <field name="name">[30] Cuota</field>
+            <field name="code">aeat_mod_390_30</field>
+            <field name="parent_id" ref="mod_390_title_7"/>
+            <field name="formulas">balance = - aeat_mod_390_30_sale.balance - aeat_mod_390_30_purchase.balance</field>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+        <record id="mod_390_title_8" model="account.financial.html.report.line">
+            <field name="name">Total bases y cuotas IVA</field>
+            <field name="code">aeat_mod_390_title_8</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_33" model="account.financial.html.report.line">
+            <field name="name">[33] Base imponible</field>
+            <field name="code">aeat_mod_390_33</field>
+            <field name="parent_id" ref="mod_390_title_8"/>
+            <field name="formulas">balance = aeat_mod_390_29.balance + aeat_mod_390_27.balance + aeat_mod_390_545.balance + aeat_mod_390_547.balance + aeat_mod_390_551.balance + aeat_mod_390_21.balance + aeat_mod_390_23.balance + aeat_mod_390_25.balance + aeat_mod_390_01.balance + aeat_mod_390_03.balance + aeat_mod_390_05.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_34" model="account.financial.html.report.line">
+            <field name="name">[34] Cuota</field>
+            <field name="code">aeat_mod_390_34</field>
+            <field name="parent_id" ref="mod_390_title_8"/>
+            <field name="formulas">balance = aeat_mod_390_30.balance + aeat_mod_390_28.balance + aeat_mod_390_546.balance + aeat_mod_390_548.balance + aeat_mod_390_552.balance + aeat_mod_390_22.balance + aeat_mod_390_24.balance + aeat_mod_390_26.balance + aeat_mod_390_02.balance + aeat_mod_390_04.balance + aeat_mod_390_06.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+        <record id="mod_390_title_9" model="account.financial.html.report.line">
+            <field name="name">Recargo de equivalencia</field>
+            <field name="code">aeat_mod_390_title_9</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_35" model="account.financial.html.report.line">
+            <field name="name">[35] Base imponible 0,5%</field>
+            <field name="code">aeat_mod_390_35</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_16_18')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_36" model="account.financial.html.report.line">
+            <field name="name">[36] Cuota 0,5%</field>
+            <field name="code">aeat_mod_390_36</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_16_18')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_599" model="account.financial.html.report.line">
+            <field name="name">[599] Base imponible 1,4%</field>
+            <field name="code">aeat_mod_390_599</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_19_21')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_600" model="account.financial.html.report.line">
+            <field name="name">[600] Cuota 1,4%</field>
+            <field name="code">aeat_mod_390_600</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_19_21')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_601" model="account.financial.html.report.line">
+            <field name="name">[601] Base imponible 5,2%</field>
+            <field name="code">aeat_mod_390_601</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_22_24')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_602" model="account.financial.html.report.line">
+            <field name="name">[602] Cuota 5,2%</field>
+            <field name="code">aeat_mod_390_602</field>
+            <field name="parent_id" ref="mod_390_title_9"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_22_24')), ('invoice_id.type','not in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+        <record id="mod_390_title_10" model="account.financial.html.report.line">
+            <field name="name">Modificación recargo equivalencia</field>
+            <field name="code">aeat_mod_390_title_10</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="14"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_43" model="account.financial.html.report.line">
+            <field name="name">[43] Base imponible</field>
+            <field name="code">aeat_mod_390_43</field>
+            <field name="parent_id" ref="mod_390_title_10"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_25_26')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_44" model="account.financial.html.report.line">
+            <field name="name">[44] Cuota</field>
+            <field name="code">aeat_mod_390_44</field>
+            <field name="parent_id" ref="mod_390_title_10"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_25_26')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_11" model="account.financial.html.report.line">
+            <field name="name">Total cuotas IVA y recargo de equivalencia</field>
+            <field name="code">aeat_mod_390_title_11</field>
+            <field name="parent_id" ref="mod_390_title_2"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_47" model="account.financial.html.report.line">
+            <field name="name">[47] Cuota</field>
+            <field name="code">aeat_mod_390_47</field>
+            <field name="parent_id" ref="mod_390_title_11"/>
+            <field name="formulas">balance = aeat_mod_390_34.balance + aeat_mod_390_36.balance + aeat_mod_390_600.balance + aeat_mod_390_602.balance + aeat_mod_390_44.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_12" model="account.financial.html.report.line">
+            <field name="name">IVA deducible</field>
+            <field name="code">aeat_mod_390_title_12</field>
+            <field name="parent_id" ref="mod_390_title_1"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="2"/>
+        </record>
+
+
+
+
+
+        <record id="mod_390_title_13" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en operaciones interiores de bienes y servicios corrientes</field>
+            <field name="code">aeat_mod_390_title_13</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_190" model="account.financial.html.report.line">
+            <field name="name">[190] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_190</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_ids','=',51),('tax_ids','=',47)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_191" model="account.financial.html.report.line">
+            <field name="name">[191] Cuota 4%</field>
+            <field name="code">aeat_mod_390_191</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_line_id','=',51),('tax_line_id','=',47)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_603" model="account.financial.html.report.line">
+            <field name="name">[603] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_603</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_ids','=',50),('tax_ids','=',52)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_604" model="account.financial.html.report.line">
+            <field name="name">[604] Cuota 10%</field>
+            <field name="code">aeat_mod_390_604</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_line_id','=',50),('tax_line_id','=',52)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_605" model="account.financial.html.report.line">
+            <field name="name">[605] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_605</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_ids','=',4),'|',('tax_ids','=',25),('tax_ids','=',5)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_606" model="account.financial.html.report.line">
+            <field name="name">[606] Cuota 21%</field>
+            <field name="code">aeat_mod_390_606</field>
+            <field name="parent_id" ref="mod_390_title_13"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),'|',('tax_line_id','=',4),'|',('tax_line_id','=',25),('tax_line_id','=',5)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_title_14" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en operaciones interiores de bienes y servicios corrientes</field>
+            <field name="code">aeat_mod_390_title_14</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_48" model="account.financial.html.report.line">
+            <field name="name">[48] Base imponible</field>
+            <field name="code">aeat_mod_390_48</field>
+            <field name="parent_id" ref="mod_390_title_14"/>
+            <field name="formulas">balance = aeat_mod_390_190.balance + aeat_mod_390_603.balance + aeat_mod_390_605.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_49" model="account.financial.html.report.line">
+            <field name="name">[49] Cuota</field>
+            <field name="code">aeat_mod_390_49</field>
+            <field name="parent_id" ref="mod_390_title_14"/>
+            <field name="formulas">balance = aeat_mod_390_191.balance + aeat_mod_390_604.balance + aeat_mod_390_606.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_15" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en operaciones interiores de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_15</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_196" model="account.financial.html.report.line">
+            <field name="name">[196] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_196</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',46)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_197" model="account.financial.html.report.line">
+            <field name="name">[197] Cuota 4%</field>
+            <field name="code">aeat_mod_390_197</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',46)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_611" model="account.financial.html.report.line">
+            <field name="name">[611] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_611</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',48)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_612" model="account.financial.html.report.line">
+            <field name="name">[612] Cuota 10%</field>
+            <field name="code">aeat_mod_390_612</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',48)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_613" model="account.financial.html.report.line">
+            <field name="name">[613] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_613</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',49)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_614" model="account.financial.html.report.line">
+            <field name="name">[614] Cuota 21%</field>
+            <field name="code">aeat_mod_390_614</field>
+            <field name="parent_id" ref="mod_390_title_15"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',49)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_title_16" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en operaciones interiores de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_16</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_50" model="account.financial.html.report.line">
+            <field name="name">[50] Base imponible</field>
+            <field name="code">aeat_mod_390_50</field>
+            <field name="parent_id" ref="mod_390_title_16"/>
+            <field name="formulas">balance = aeat_mod_390_196.balance + aeat_mod_390_611.balance + aeat_mod_390_613.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_51" model="account.financial.html.report.line">
+            <field name="name">[51] Cuota</field>
+            <field name="code">aeat_mod_390_51</field>
+            <field name="parent_id" ref="mod_390_title_16"/>
+            <field name="formulas">balance = aeat_mod_390_197.balance + aeat_mod_390_612.balance + aeat_mod_390_614.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_17" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en importaciones de bienes corrientes</field>
+            <field name="code">aeat_mod_390_title_17</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_202" model="account.financial.html.report.line">
+            <field name="name">[202] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_202</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',42)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_203" model="account.financial.html.report.line">
+            <field name="name">[203] Cuota 4%</field>
+            <field name="code">aeat_mod_390_203</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',42)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_619" model="account.financial.html.report.line">
+            <field name="name">[619] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_619</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',44)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_620" model="account.financial.html.report.line">
+            <field name="name">[620] Cuota 10%</field>
+            <field name="code">aeat_mod_390_620</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',44)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_621" model="account.financial.html.report.line">
+            <field name="name">[621] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_621</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',15)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_622" model="account.financial.html.report.line">
+            <field name="name">[622] Cuota 21%</field>
+            <field name="code">aeat_mod_390_622</field>
+            <field name="parent_id" ref="mod_390_title_17"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',15)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_18" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en importaciones de bienes corrientes</field>
+            <field name="code">aeat_mod_390_title_18</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_52" model="account.financial.html.report.line">
+            <field name="name">[52] Base imponible</field>
+            <field name="code">aeat_mod_390_52</field>
+            <field name="parent_id" ref="mod_390_title_18"/>
+            <field name="formulas">balance = aeat_mod_390_202.balance + aeat_mod_390_619.balance + aeat_mod_390_621.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_53" model="account.financial.html.report.line">
+            <field name="name">[53] Cuota</field>
+            <field name="code">aeat_mod_390_53</field>
+            <field name="parent_id" ref="mod_390_title_18"/>
+            <field name="formulas">balance = aeat_mod_390_203.balance + aeat_mod_390_620.balance + aeat_mod_390_622.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_19" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en importaciones de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_19</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_208" model="account.financial.html.report.line">
+            <field name="name">[208] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_208</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',43)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_209" model="account.financial.html.report.line">
+            <field name="name">[209] Cuota 4%</field>
+            <field name="code">aeat_mod_390_209</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',43)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_623" model="account.financial.html.report.line">
+            <field name="name">[623] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_623</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',45)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_624" model="account.financial.html.report.line">
+            <field name="name">[624] Cuota 10%</field>
+            <field name="code">aeat_mod_390_624</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',45)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_625" model="account.financial.html.report.line">
+            <field name="name">[625] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_625</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',16)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_626" model="account.financial.html.report.line">
+            <field name="name">[626] Cuota 21%</field>
+            <field name="code">aeat_mod_390_626</field>
+            <field name="parent_id" ref="mod_390_title_19"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',16)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_20" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en importaciones de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_20</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_54" model="account.financial.html.report.line">
+            <field name="name">[54] Base imponible</field>
+            <field name="code">aeat_mod_390_54</field>
+            <field name="parent_id" ref="mod_390_title_20"/>
+            <field name="formulas">balance = aeat_mod_390_208.balance + aeat_mod_390_623.balance + aeat_mod_390_625.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_55" model="account.financial.html.report.line">
+            <field name="name">[55] Cuota</field>
+            <field name="code">aeat_mod_390_55</field>
+            <field name="parent_id" ref="mod_390_title_20"/>
+            <field name="formulas">balance = aeat_mod_390_209.balance + aeat_mod_390_624.balance + aeat_mod_390_626.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+        <record id="mod_390_title_21" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en adquisiciones intracomunitarias de bienes corrientes</field>
+            <field name="code">aeat_mod_390_title_21</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_214" model="account.financial.html.report.line">
+            <field name="name">[214] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_214</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',27)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_215" model="account.financial.html.report.line">
+            <field name="name">[215] Cuota 4%</field>
+            <field name="code">aeat_mod_390_215</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',27)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_627" model="account.financial.html.report.line">
+            <field name="name">[627] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_627</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',33)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_628" model="account.financial.html.report.line">
+            <field name="name">[628] Cuota 10%</field>
+            <field name="code">aeat_mod_390_628</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',33)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_629" model="account.financial.html.report.line">
+            <field name="name">[629] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_629</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',9)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_630" model="account.financial.html.report.line">
+            <field name="name">[630] Cuota 21%</field>
+            <field name="code">aeat_mod_390_630</field>
+            <field name="parent_id" ref="mod_390_title_21"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',9)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_22" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en adquisiciones intracomunitarias de bienes corrientes</field>
+            <field name="code">aeat_mod_390_title_22</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_56" model="account.financial.html.report.line">
+            <field name="name">[56] Base imponible</field>
+            <field name="code">aeat_mod_390_56</field>
+            <field name="parent_id" ref="mod_390_title_22"/>
+            <field name="formulas">balance = aeat_mod_390_214.balance + aeat_mod_390_627.balance + aeat_mod_390_629.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_57" model="account.financial.html.report.line">
+            <field name="name">[57] Cuota</field>
+            <field name="code">aeat_mod_390_57</field>
+            <field name="parent_id" ref="mod_390_title_22"/>
+            <field name="formulas">balance = aeat_mod_390_215.balance + aeat_mod_390_628.balance + aeat_mod_390_630.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_23" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en adquisiciones intracomunitarias de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_23</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_220" model="account.financial.html.report.line">
+            <field name="name">[220] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_220</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',30)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_221" model="account.financial.html.report.line">
+            <field name="name">[221] Cuota 4%</field>
+            <field name="code">aeat_mod_390_221</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',30)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_631" model="account.financial.html.report.line">
+            <field name="name">[631] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_631</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',36)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_632" model="account.financial.html.report.line">
+            <field name="name">[632] Cuota 10%</field>
+            <field name="code">aeat_mod_390_632</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',36)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_633" model="account.financial.html.report.line">
+            <field name="name">[633] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_633</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',12)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_634" model="account.financial.html.report.line">
+            <field name="name">[634] Cuota 21%</field>
+            <field name="code">aeat_mod_390_634</field>
+            <field name="parent_id" ref="mod_390_title_23"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',12)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_24" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en adquisiciones intracomunitarias de bienes de inversión</field>
+            <field name="code">aeat_mod_390_title_24</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_58" model="account.financial.html.report.line">
+            <field name="name">[58] Base imponible</field>
+            <field name="code">aeat_mod_390_58</field>
+            <field name="parent_id" ref="mod_390_title_24"/>
+            <field name="formulas">balance = aeat_mod_390_220.balance + aeat_mod_390_631.balance + aeat_mod_390_633.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_59" model="account.financial.html.report.line">
+            <field name="name">[59] Cuota</field>
+            <field name="code">aeat_mod_390_59</field>
+            <field name="parent_id" ref="mod_390_title_24"/>
+            <field name="formulas">balance = aeat_mod_390_221.balance + aeat_mod_390_632.balance + aeat_mod_390_634.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_25" model="account.financial.html.report.line">
+            <field name="name">IVA deducible en adquisiciones intracomunitarias de servicios</field>
+            <field name="code">aeat_mod_390_title_25</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_587" model="account.financial.html.report.line">
+            <field name="name">[587] Base imponible 4%</field>
+            <field name="code">aeat_mod_390_587</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',97)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_588" model="account.financial.html.report.line">
+            <field name="name">[588] Cuota 4%</field>
+            <field name="code">aeat_mod_390_588</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',97)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_635" model="account.financial.html.report.line">
+            <field name="name">[635] Base imponible 10%</field>
+            <field name="code">aeat_mod_390_635</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',94)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_636" model="account.financial.html.report.line">
+            <field name="name">[636] Cuota 10%</field>
+            <field name="code">aeat_mod_390_636</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',94)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_casilla_637" model="account.financial.html.report.line">
+            <field name="name">[637] Base imponible 21%</field>
+            <field name="code">aeat_mod_390_637</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_ids','=',7)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_638" model="account.financial.html.report.line">
+            <field name="name">[638] Cuota 21%</field>
+            <field name="code">aeat_mod_390_638</field>
+            <field name="parent_id" ref="mod_390_title_25"/>
+            <field name="domain" eval="[('invoice_id.type','not in',['out_refund','in_refund']),('tax_line_id','=',7)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+        <record id="mod_390_title_26" model="account.financial.html.report.line">
+            <field name="name">Total bases imponibles y cuotas deducibles en adquisiciones intracomunitarias de servicios</field>
+            <field name="code">aeat_mod_390_title_26</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_597" model="account.financial.html.report.line">
+            <field name="name">[597] Base imponible</field>
+            <field name="code">aeat_mod_390_597</field>
+            <field name="parent_id" ref="mod_390_title_26"/>
+            <field name="formulas">balance = aeat_mod_390_587.balance + aeat_mod_390_635.balance + aeat_mod_390_637.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_598" model="account.financial.html.report.line">
+            <field name="name">[598] Cuota</field>
+            <field name="code">aeat_mod_390_598</field>
+            <field name="parent_id" ref="mod_390_title_26"/>
+            <field name="formulas">balance = aeat_mod_390_588.balance + aeat_mod_390_636.balance + aeat_mod_390_638.balance</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+
+
+
+
+
+
+        <record id="mod_390_title_27" model="account.financial.html.report.line">
+            <field name="name">Rectificación de deducciones</field>
+            <field name="code">aeat_mod_390_title_27</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_639" model="account.financial.html.report.line">
+            <field name="name">[639] Base imponible</field>
+            <field name="code">aeat_mod_390_639</field>
+            <field name="parent_id" ref="mod_390_title_27"/>
+            <field name="domain" eval="[('tax_ids.tag_ids','=',ref('l10n_es.mod_303_40_41')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_casilla_62" model="account.financial.html.report.line">
+            <field name="name">[62] Cuota</field>
+            <field name="code">aeat_mod_390_62</field>
+            <field name="parent_id" ref="mod_390_title_27"/>
+            <field name="domain" eval="[('tax_line_id.tag_ids','=',ref('l10n_es.mod_303_40_41')), ('invoice_id.type','in',['out_refund','in_refund'])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="4"/>
+        </record>
+
+
+
+        <record id="mod_390_title_28" model="account.financial.html.report.line">
+            <field name="name">Suma de deducciones</field>
+            <field name="code">aeat_mod_390_title_28</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_63" model="account.financial.html.report.line">
+            <field name="name">[63] Regularización bienes de inversión</field>
+            <field name="code">aeat_mod_390_63</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="formulas">balance = from_context</field>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_522" model="account.financial.html.report.line">
+            <field name="name">[522] Regularización por aplicación porcentaje definitivo de prorrata</field>
+            <field name="code">aeat_mod_390_522</field>
+            <field name="parent_id" ref="mod_390_title_12"/>
+            <field name="formulas">balance = from_context</field>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="mod_390_casilla_64" model="account.financial.html.report.line">
+            <field name="name">[64] Cuota</field>
+            <field name="code">aeat_mod_390_64</field>
+            <field name="parent_id" ref="mod_390_title_28"/>
+            <field name="formulas">balance = aeat_mod_390_49.balance + aeat_mod_390_51.balance + aeat_mod_390_53.balance + aeat_mod_390_55.balance + aeat_mod_390_57.balance + aeat_mod_390_59.balance + aeat_mod_390_62.balance + aeat_mod_390_598.balance + aeat_mod_390_63.balance + aeat_mod_390_522.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="4"/>
+        </record>
+
+        <record id="mod_390_title_29" model="account.financial.html.report.line">
+            <field name="name">Resultado régimen general</field>
+            <field name="code">aeat_mod_390_title_29</field>
+            <field name="parent_id" ref="mod_390_title_1"/>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="1"/>
+        </record>
+
+        <record id="mod_390_casilla_65" model="account.financial.html.report.line">
+            <field name="name">[65] Cuota</field>
+            <field name="code">aeat_mod_390_65</field>
+            <field name="parent_id" ref="mod_390_title_29"/>
+            <field name="formulas">balance = aeat_mod_390_47.balance - aeat_mod_390_64.balance</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

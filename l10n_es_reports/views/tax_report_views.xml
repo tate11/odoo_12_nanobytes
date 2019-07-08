@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--Mod 111-->
+
+        <record id="action_mod_111_report" model="ir.actions.server">
+            <field name="name">Modelo 111</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company" />
+            <field name="state">code</field>
+            <field name="code">action = model.open_aeat_tax_report('111')</field>
+        </record>
+
+        <menuitem id="menu_mod_111_report"
+                  name="Modelo 111"
+                  parent="spanish_reports_menu"
+                  action="action_mod_111_report"
+                  sequence="3"
+        />
+
+
+        <!--Mod 115-->
+
+        <record id="action_mod_115_report" model="ir.actions.server">
+            <field name="name">Modelo 115</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company" />
+            <field name="state">code</field>
+            <field name="code">action = model.open_aeat_tax_report('115')</field>
+        </record>
+
+        <menuitem id="menu_mod_115_report"
+                  name="Modelo 115"
+                  parent="spanish_reports_menu"
+                  action="action_mod_115_report"
+                  sequence="4"
+        />
+
+
+        <!--Mod 303-->
+
+        <record id="action_mod_303_report" model="ir.actions.server">
+            <field name="name">Modelo 303</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company" />
+            <field name="state">code</field>
+            <field name="code">action = model.open_aeat_tax_report('303')</field>
+        </record>
+
+        <menuitem id="menu_mod_303_report"
+                  name="Modelo 303"
+                  parent="spanish_reports_menu"
+                  action="action_mod_303_report"
+                  sequence="8"
+        />
+
+
+        <!--Mod 390-->
+
+        <record id="action_mod_390_report" model="ir.actions.server">
+            <field name="name">Modelo 390</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company" />
+            <field name="state">code</field>
+            <field name="code">action = model.open_aeat_tax_report('390')</field>
+        </record>
+
+        <menuitem id="menu_mod_390_report"
+                  name="Modelo 390"
+                  parent="spanish_reports_menu"
+                  action="action_mod_390_report"
+                  sequence="11"
+        />
+
+
+        <!-- Mod 200 -->
+
+        <record id="action_mod_200_report" model="ir.actions.server">
+            <field name="name">Modelo 200</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company" />
+            <field name="state">code</field>
+            <field name="code">action = model.open_model_200()</field>
+        </record>
+
+        <menuitem id="menu_mod_200_report"
+                  name="Modelo 200"
+                  parent="spanish_reports_menu"
+                  action="action_mod_200_report"
+                  sequence="7"
+        />
+
+
+        <!-- Profit and Loss -->
+
+        <record id="action_profit_and_loss_report" model="ir.actions.server">
+            <field name="name">Perdidas y Ganacias</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_company"/>
+            <field name="state">code</field>
+            <field name="code">action = model.open_profit_and_loss_report()</field>
+        </record>
+
+        <menuitem id="menu_profit_and_loss_report"
+                  name="Perdidas y Ganancias"
+                  parent="spanish_reports_menu"
+                  action="action_profit_and_loss_report"
+                  sequence="2"
+        />
+
+        <!-- Presentaciones Impuestos-->
+
+        <record id="presentacion_view_form" model="ir.ui.view">
+            <field name="name">presentacion.view.form</field>
+            <field name="model">presentacion.impuestos</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="presentar" type="object"
+                                string="Validar"
+                                attrs="{'invisible': [('estado','in',('done'))]}"
+                                class="btn-primary"/>
+                        <button name="rellenar" type="object"
+                                string="Recargar valores"
+                                attrs="{'invisible': [('estado','in',('done'))]}"/>
+                        <button name="cancelar" type="object"
+                                string="Cancelar"
+                                attrs="{'invisible': [('estado','in',('draft'))]}"/>
+                        <field name="estado" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" required="1" /></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="selector_impuesto" required="1"
+                                       string="Impuesto a regularizar"/>
+                                <field name="date_from" required="1"
+                                       string="Fecha inicio presentación"/>
+                                <field name="date_to" required="1"
+                                       string="Fecha fin presentación"/>
+                                <field name="move_id" string="Asiento generado"/>
+                            </group>
+                            <group>
+                                <field name="date_asiento" required="1"
+                                       string="Fecha de asiento de regularización"/>
+                                <field name="journal_id" required="1"
+                                       string="Diario de creación del asiento"/>
+                                <field name="cuenta_hacienda_acreedora_id" required="1"/>
+                                <field name="cuenta_hacienda_deudora_id" required="1"/>
+                            </group>
+                        </group>
+                        <separator string="Impuestos a presentar" colspan="4"/>
+                        <field name="line_ids" nolabel="1" colspan="4">
+                            <tree editable="bottom" create="0" delete="0">
+                                <field name="account_id"/>
+                                <field name="tax_id"/>
+                                <field name="tipo_factura"/>
+                                <field name="balance" sum="Total"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="presentacion_view_tree" model="ir.ui.view">
+            <field name="name">presentacion.view.tree</field>
+            <field name="model">presentacion.impuestos</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="selector_impuesto" string="Impuesto"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_presentar_impuestos" model="ir.actions.act_window">
+            <field name="name">Presentación Impuestos</field>
+            <field name="res_model">presentacion.impuestos</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_action_presentar_impuestos"
+                  name="Presentación de impuestos"
+                  parent="spanish_reports_menu"
+                  action="action_presentar_impuestos"
+                  sequence="15"
+        />
+
+    </data>
+</odoo>

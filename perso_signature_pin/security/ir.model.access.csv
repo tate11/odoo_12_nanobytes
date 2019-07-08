@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+manager_simplelead, Model manager access,model_simple_lead_config_settings,perso_simple_lead.group_manager,1,1,1,1

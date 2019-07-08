@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_tipo_mandato" model="ir.ui.view">
+		<field name="name">view.tipo.mandato</field>
+		<field name="model">sdd.mandate</field>
+		<field name="inherit_id" ref="account_sepa_direct_debit.account_sepa_direct_debit_mandate_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='payment_journal_id']" position="after">
+				<field name="tipo_mandato" />
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_tree_tipo_mandato" model="ir.ui.view">
+		<field name="name">view.tree.tipo.mandato</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account_sepa_direct_debit.sdd_account_payment_with_mandates_tree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='sdd_mandate_id']" position="after">
+				<field name="tipo_mandato" />
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Pedidos -->
+	<record id="view_form_sale_order_mandato" model="ir.ui.view">
+		<field name="name">view.form.sale.order.tipo.mandato</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='other_information']/group//field[@name='invoice_status']" position="after">
+				<field name="sdd_mandate_id" domain="[('partner_id','=',partner_id)]"/>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Subscripciones -->
+	<record id="view_form_sale_subscription_mandato" model="ir.ui.view">
+		<field name="name">view.form.sale.subscription.tipo.mandato</field>
+		<field name="model">sale.subscription</field>
+		<field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@id='settings']/group//field[@name='payment_token_id']" position="after">
+				<field name="sdd_mandate_id" domain="[('partner_id','=',partner_id)]"/>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Facturas -->
+	<record id="view_form_account_invoice_mandato" model="ir.ui.view">
+		<field name="name">view.form.account.invoice.tipo.mandato</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='other_info']/group/group//field[@name='partner_bank_id']" position="after">
+				<field name="sdd_paying_mandate_id" domain="[('partner_id','=',partner_id)]"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

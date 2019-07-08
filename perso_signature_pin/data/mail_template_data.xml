@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--Email template -->
+        <record id="email_template_pin_sale" model="mail.template">
+            <field name="name">Sales Order Pin - Send by Email</field>
+            <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
+            <field name="subject">${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} (Ref ${object.name or 'n/a' }) PIN - Do not replay</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[<html>
+                <head></head>
+                % set record = ctx.get('record')
+                % set company = record and record.company_id or user.company_id
+                <body style="margin: 0; padding: 0;">
+                	<div style="width: 100%; margin: 0 auto 0; font-family: FuturaPT,'Arial',sans-serif;">
+
+                        <table border="0" cellpadding="0" bgcolor="#57C3EC" style="min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;">
+                            <tbody><tr>
+                              <td valign="middle">
+                                  <span style="font-size: 20px; color: white; font-weight: bold; padding-left: 15px;">
+                                      PIN Confirmation
+                                  </span>
+                              </td>
+                              <td valign="middle" align="right">
+                                  <img style="padding: 0px; margin: 0px; height: auto; width: 220px; padding-right: 15px;" src="/logo.png?company=${company.id}" alt="${company.name}">
+                              </td>
+                            </tr>
+                          </tbody></table>
+
+                        <div style="text-align: center; padding-top: 15px; padding-bottom: 15px; color: #5D6162;">
+                            <div style="color: #000; font-size: 1.5em; padding-bottom: 15px; letter-spacing: 1px;">
+                                Hi, ${object.partner_id.name} .
+                            </div>
+                            <div style="font-size: 1em; padding-bottom: 15px;">
+                                Here is the PIN needed to confirm the sale: <span style="font-size: 1.5em; color: #000;" >${object.signature_pin} </span>
+                            </div>
+                        </div>
+
+                        <table border="0" cellpadding="0" bgcolor="#57C3EC" style="min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;">
+                            <tbody><tr>
+                              <td valign="middle" align="left" style="color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;">
+                                ${company.name}<br>
+                                ${company.phone}
+                              </td>
+                              <td valign="middle" align="right" style="color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;">
+                                <span class="Object" id="OBJ_PREFIX_DWT5764_ZmEmailObjectHandler"><span class="Object" id="OBJ_PREFIX_DWT5791_ZmEmailObjectHandler"><span class="Object" id="OBJ_PREFIX_DWT5818_ZmEmailObjectHandler"><span class="Object" id="OBJ_PREFIX_DWT5845_ZmEmailObjectHandler"><a href="mailto:${company.email} style="text-decoration: none; color: white;" target="_blank">${company.email}</a></span></span></span></span><br>
+                                    <span class="Object" id="OBJ_PREFIX_DWT5765_com_zimbra_url"><span class="Object" id="OBJ_PREFIX_DWT5792_com_zimbra_url"><span class="Object" id="OBJ_PREFIX_DWT5819_com_zimbra_url"><span class="Object" id="OBJ_PREFIX_DWT5846_com_zimbra_url"><a href='${company.website}' style="text-decoration: none; color: white;" target="_blank">
+                                        ${company.website}
+                                    </a></span></span></span></span>
+                              </td>
+                            </tr>
+                        </tbody></table>
+
+                    </div>
+                </body>
+                </html>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale2" model="mail.template">
+            <field name="name">Sales Order2: Send by email</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="email_from">${object.user_id.email_formatted |safe}</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="subject">${object.company_id.name} ${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} (Ref ${object.name or 'n/a' })</field>
+            <field name="body_html" type="html">
+              <div style="margin: 0px; padding: 0px;">
+                  <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                      % set doc_name = 'quotation' if object.state in ('draft', 'sent') else 'order'
+                      Dear ${object.partner_id.name}
+                      % if object.partner_id.parent_id:
+                          (${object.partner_id.parent_id.name})
+                      % endif
+                      <br /><br />
+                      Here is
+                      % if ctx.get('proforma')
+                          in attachment your pro-forma invoice
+                      % else
+                          the ${doc_name} <strong>${object.name}</strong>
+                      % endif
+                      % if object.origin:
+                          (with reference: ${object.origin} )
+                      % endif
+                      amounting in <strong>${format_amount(object.amount_total, object.pricelist_id.currency_id)}</strong>
+                      from ${object.company_id.name}.
+                      <br /><br />
+                      Do not hesitate to contact us if you have any question.
+                  </p>
+              </div>
+            </field>
+            <field name="report_name">${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

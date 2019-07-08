@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_documentation_language_tree">
+        <field name="name">documentation.language.tree</field>
+        <field name="model">documentation.language</field>
+        <field name="arch" type="xml">
+            <tree string="Languages" editable="bottom" >
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_documentation_language_form">
+        <field name="name">documentation.language.form</field>
+        <field name="model">documentation.language</field>
+        <field name="arch" type="xml">
+            <form string="Language">
+                <sheet>
+                    <h1><field name="name" /></h1>
+                </sheet>                
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_documentation_language">
+        <field name="name">Languages</field>
+        <field name="res_model">documentation.language</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="documentation_language_view_kanban" model="ir.ui.view" >
+        <field name="name">documentation.language.kanban</field>
+        <field name="model">documentation.language</field>
+        <field name="priority">200</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard" create="0">
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(1)}">
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary"><field name="name"/></div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content">
+                                <div class="">
+                                    <div class="col-xs-6 o_kanban_primary_right">
+                                        <div class="mb4">
+                                            <a name="%(module_documentation.action_documentation_app)d" type="action" context="{'search_default_language_id': active_id, 'default_language_id': active_id}"><field name="app_counter" /> Apps</a>
+                                        </div>
+                                        <div class="mb4">
+                                            <a name="%(module_documentation.action_documentation_script)d" type="action" context="{'search_default_language_id': active_id, 'default_language_id': active_id}"><field name="script_counter" /> Scripts</a>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_documentation_language_view" model="ir.actions.act_window">
+        <field name="name">Languages</field>
+        <field name="res_model">documentation.language</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="module_documentation.documentation_language_view_kanban"/>
+        <field name="help" type="html">
+            <p>
+                The programming languages appears here.
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//p[@id='fiscal_position_remark']" position="after">
+        <t t-if="doc.signature_pin and (doc.state == 'sale' or doc.state == 'done')">
+	        <p id="signature_pin" t-if="doc.signature_pin">
+	            <strong>Signature PIN:</strong>
+	            <span t-esc="str((doc.signature_pin)).replace('.', '')" />
+	        </p>
+        </t>     
+    </xpath>
+</template>
+</odoo>

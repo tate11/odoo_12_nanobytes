@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_account_report_invoices_clients" model="ir.actions.client">
+            <field name="name">Registro de Facturas Expedidas</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.invoices.clients'}" />
+        </record>
+
+        <record id="action_account_report_invoices_suppliers" model="ir.actions.client">
+            <field name="name">Registro de Facturas Recibidas</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.invoices.suppliers'}" />
+        </record>
+
+        <record id="action_account_report_investment_goods_irpf" model="ir.actions.client">
+            <field name="name">Registro de Bienes de Inversión IRPF</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.investment.goods.irpf'}" />
+        </record>
+
+
+        <menuitem id="menu_invoices_clients_report"
+                  name="Registro de Facturas Expedidas"
+                  parent="spanish_reports_menu"
+                  action="action_account_report_invoices_clients"
+                  sequence="12"
+        />
+
+        <menuitem id="menu_invoices_suppliers_report"
+                  name="Registro de Facturas Recibidas"
+                  parent="spanish_reports_menu"
+                  action="action_account_report_invoices_suppliers"
+                  sequence="13"
+        />
+
+        <menuitem id="menu_investment_goods_irps_report"
+                  name="Registro de Bienes de Inversión IRPF"
+                  parent="spanish_reports_menu"
+                  action="action_account_report_investment_goods_irpf"
+                  sequence="14"
+        />
+
+
+
+    </data>
+</odoo>

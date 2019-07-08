@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_documentation_manual_inherit_form">
+        <field name="name">documentation.manual.inherit.form</field>
+        <field name="model">documentation.manual</field>
+        <field name="inherit_id" ref="module_documentation.view_documentation_manual_form"></field>
+        <field name="arch" type="xml">
+            <page name="description" position="after">
+                <page string="Partners" name="partner">
+                    <field name="partner_ids" />
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

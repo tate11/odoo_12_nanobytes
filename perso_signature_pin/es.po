@@ -1,0 +1,421 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* perso_signature_pin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e-20170511\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-07 10:10+0000\n"
+"PO-Revision-Date: 2017-09-07 10:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: perso_signature_pin
+#: model:mail.template,subject:perso_signature_pin.email_template_pin_sale
+msgid "${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} (Ref ${object.name or 'n/a' }) PIN - Do not replay"
+msgstr "${object.state in ('draft', 'sent') and 'Presupuesto' or 'Pedido de venta'} (Ref ${object.name or 'n/a' }) PIN - No responder"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "&amp;times;"
+msgstr "&amp;times;"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:10
+#, python-format
+msgid "&times;"
+msgstr "&times;"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:21
+#, python-format
+msgid ", for an amount of"
+msgstr ", para un total de"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "<b>here</b>"
+msgstr "<b>aquí</b>"
+
+#. module: perso_signature_pin
+#: model:mail.template,body_html:perso_signature_pin.email_template_pin_sale
+msgid "<html>\n"
+"                <head></head>\n"
+"                % set record = ctx.get('record')\n"
+"                % set company = record and record.company_id or user.company_id\n"
+"                <body style=\"margin: 0; padding: 0;\">\n"
+"                	<div style=\"width: 100%; margin: 0 auto 0; font-family: FuturaPT,'Arial',sans-serif;\">\n"
+"\n"
+"                        <table border=\"0\" cellpadding=\"0\" bgcolor=\"#57C3EC\" style=\"min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;\">\n"
+"                            <tbody><tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size: 20px; color: white; font-weight: bold; padding-left: 15px;\">\n"
+"                                      PIN de confirmación\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img style=\"padding: 0px; margin: 0px; height: auto; width: 220px; padding-right: 15px;\" src=\"/logo.png?company=${company.id}\" alt=\"${company.name}\">\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </tbody></table>\n"
+"\n"
+"                        <div style=\"text-align: center; padding-top: 15px; padding-bottom: 15px; color: #5D6162;\">\n"
+"                            <div style=\"color: #000; font-size: 1.5em; padding-bottom: 15px; letter-spacing: 1px;\">\n"
+"                                Hola, ${object.partner_id.name} .\n"
+"                            </div>\n"
+"                            <div style=\"font-size: 1em; padding-bottom: 15px;\">\n"
+"                                A continuación le mostramos el PIN necesario para confirmar la venta: <span style=\"font-size: 1.5em; color: #000;\" >${object.signature_pin} </span>\n"
+"                            </div>\n"
+"                        </div>\n"
+"\n"
+"                        <table border=\"0\" cellpadding=\"0\" bgcolor=\"#57C3EC\" style=\"min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;\">\n"
+"                            <tbody><tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;\">\n"
+"                                ${company.name}<br>\n"
+"                                ${company.phone}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;\">\n"
+"                                <span class=\"Object\" id=\"OBJ_PREFIX_DWT5764_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5791_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5818_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5845_ZmEmailObjectHandler\"><a href=\"mailto:${company.email} style=\"text-decoration: none; color: white;\" target=\"_blank\">${company.email}</a></span></span></span></span><br>\n"
+"                                    <span class=\"Object\" id=\"OBJ_PREFIX_DWT5765_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5792_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5819_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5846_com_zimbra_url\"><a href='${company.website}' style=\"text-decoration: none; color: white;\" target=\"_blank\">\n"
+"                                        ${company.website}\n"
+"                                    </a></span></span></span></span>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                        </tbody></table>\n"
+"\n"
+"                    </div>\n"
+"                </body>\n"
+"                </html>\n"
+"            "
+msgstr "<html>\n"
+"                <head></head>\n"
+"                % set record = ctx.get('record')\n"
+"                % set company = record and record.company_id or user.company_id\n"
+"                <body style=\"margin: 0; padding: 0;\">\n"
+"                	<div style=\"width: 100%; margin: 0 auto 0; font-family: FuturaPT,'Arial',sans-serif;\">\n"
+"\n"
+"                        <table border=\"0\" cellpadding=\"0\" bgcolor=\"#57C3EC\" style=\"min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;\">\n"
+"                            <tbody><tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size: 20px; color: white; font-weight: bold; padding-left: 15px;\">\n"
+"                                      PIN de confirmación\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img style=\"padding: 0px; margin: 0px; height: auto; width: 220px; padding-right: 15px;\" src=\"/logo.png?company=${company.id}\" alt=\"${company.name}\">\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </tbody></table>\n"
+"\n"
+"                        <div style=\"text-align: center; padding-top: 15px; padding-bottom: 15px; color: #5D6162;\">\n"
+"                            <div style=\"color: #000; font-size: 1.5em; padding-bottom: 15px; letter-spacing: 1px;\">\n"
+"                                Hola, ${object.partner_id.name} .\n"
+"                            </div>\n"
+"                            <div style=\"font-size: 1em; padding-bottom: 15px;\">\n"
+"                                A continuación le mostramos el PIN necesario para confirmar la venta: <span style=\"font-size: 1.5em; color: #000;\" >${object.signature_pin} </span>\n"
+"                            </div>\n"
+"                        </div>\n"
+"\n"
+"                        <table border=\"0\" cellpadding=\"0\" bgcolor=\"#57C3EC\" style=\"min-width: 590px; width: 100%; background-color: rgb(87, 195, 236); padding: 20px;\">\n"
+"                            <tbody><tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;\">\n"
+"                                ${company.name}<br>\n"
+"                                ${company.phone}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: rgb(255, 255, 255); padding: 10px 15px; font-size: 12px;\">\n"
+"                                <span class=\"Object\" id=\"OBJ_PREFIX_DWT5764_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5791_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5818_ZmEmailObjectHandler\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5845_ZmEmailObjectHandler\"><a href=\"mailto:${company.email} style=\"text-decoration: none; color: white;\" target=\"_blank\">${company.email}</a></span></span></span></span><br>\n"
+"                                    <span class=\"Object\" id=\"OBJ_PREFIX_DWT5765_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5792_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5819_com_zimbra_url\"><span class=\"Object\" id=\"OBJ_PREFIX_DWT5846_com_zimbra_url\"><a href='${company.website}' style=\"text-decoration: none; color: white;\" target=\"_blank\">\n"
+"                                        ${company.website}\n"
+"                                    </a></span></span></span></span>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                        </tbody></table>\n"
+"\n"
+"                    </div>\n"
+"                </body>\n"
+"                </html>\n"
+"            "
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "<span> Please check your email in order to proceed and don't close this window.</span>"
+msgstr "<span> Por favor, verifica su correo en orden a proceder y no cierre esta ventana.</span>"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "<span>, for an amount of </span>"
+msgstr "<span>, para un total de </span>"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "<span>I agree that by signing with PIN this proposal, I\n"
+"                        accept it on the behalf of </span>"
+msgstr "<span>Estoy de acuerdo en que al firmar con PIN esta propuesta, yo\n"
+"                        acepto en nombre de </span>"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "<span>with payment terms: </span>"
+msgstr "<span>con los plazos de pago: </span>"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.report_saleorder_document
+msgid "<strong>Signature PIN:</strong>"
+msgstr "<strong>Firma PIN:</strong>"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:17
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_active_more_fields
+#, python-format
+msgid "Active More Fields"
+msgstr "Activar más campos"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:72
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:19
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_comercial_name
+#, python-format
+msgid "Comercial Name"
+msgstr "Nombre comercial"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:32
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Comercial Name:"
+msgstr "Nombre comercial:"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:21
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_email
+#, python-format
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:42
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:23
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_fax
+#, python-format
+msgid "Fax"
+msgstr "Fax"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:52
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Fax:"
+msgstr "Fax:"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:18
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_fiscal_name
+#, python-format
+msgid "Fiscal Name"
+msgstr "Nombre fiscal"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:28
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Fiscal Name:"
+msgstr "Nombre fiscal:"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:24
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_frontis
+#, python-format
+msgid "Frontis"
+msgstr "Frontis"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:57
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Frontis:"
+msgstr "Frontis:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:20
+#, python-format
+msgid "I agree that by signing with PIN this proposal, I\n"
+"                        accept it on the behalf of"
+msgstr "Estoy de acuerdo en que al firmar con PIN esta propuesta, yo\n"
+"                        acepto en nombre de"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:17
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "If you haven't any email click"
+msgstr "Si no os ha llegado ningún correo pincha"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/controllers/main.py:55
+#, python-format
+msgid "Order signed by %s with the PIN: %s"
+msgstr "Pedido firmado por %s con el PIN: %s"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/js/signature_pin.js:134
+#, python-format
+msgid "PIN incorrecto, por favor inserta el PIN adecuado o usa la opción de reenviar PIN de nuevo"
+msgstr "PIN incorrecto, por favor inserta el PIN adecuado o usa la opción de reenviar PIN de nuevo"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:22
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_phone
+#, python-format
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:48
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:16
+#, python-format
+msgid "Please check your email in order to proceed and don't close this window."
+msgstr "Por favor, verifica su correo en orden a proceder y no cierre esta ventana."
+
+#. module: perso_signature_pin
+#: model:ir.model,name:perso_signature_pin.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:71
+#, python-format
+msgid "Sign & Confirm"
+msgstr "Firmar & Confirmar"
+
+#. module: perso_signature_pin
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+msgid "Sign &amp; Confirm"
+msgstr "Firmar &amp; Confirmar"
+
+#. module: perso_signature_pin
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_signature_pin
+msgid "Signature Pin"
+msgstr "Firma Pin"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:11
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Validate Order"
+msgstr "Validar pedido"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:15
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "We have just sent you an email to"
+msgstr "Acabamos de enviaros un correo a"
+
+#. module: perso_signature_pin
+#: code:addons/perso_signature_pin/models/SaleOrder.py:20
+#: model:ir.model.fields,field_description:perso_signature_pin.field_sale_order_web_site
+#, python-format
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:38
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Website:"
+msgstr "Sitio web:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:61
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Your Name:"
+msgstr "Su nombre:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:65
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "Your PIN:"
+msgstr "Su PIN:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:17
+#, python-format
+msgid "here"
+msgstr "aquí"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:71
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "or"
+msgstr "o"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:17
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "to resent."
+msgstr "para reenviar."
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:24
+#, python-format
+msgid "with payment terms:"
+msgstr "con los plazos de pago:"
+
+#. module: perso_signature_pin
+#. openerp-web
+#: code:addons/perso_signature_pin/static/src/xml/signature_pin.xml:15
+#: model:ir.ui.view,arch_db:perso_signature_pin.opt_signature_pin
+#, python-format
+msgid "with the PIN that you need to sign."
+msgstr "con el PIN necesario para firmar."
+

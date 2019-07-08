@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- HELPDESK INHERIT VIEWS -->
+        <record id="act_helpdesk_2_passwords" model="ir.actions.act_window">
+            <field name="name">Contraseñas cliente</field>
+            <field name="res_model">res.partner.passwords</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="groups_id" eval="[(4, ref('module_passwords.pass_user'))]"/>
+        </record>
+
+        <record id="ticket_view_buttons_2_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.view.buttons</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+            <field name="priority" eval="20"/>
+            <field name="groups_id" eval="[(4, ref('module_passwords.pass_user'))]"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="action" name="%(module_passwords.act_helpdesk_2_passwords)d" 
+                        attrs="{'invisible': ['|',('partner_id', '=', False),('passwords_count','&lt;=',0)]}"
+                        icon="fa-key">
+                        <field name="passwords_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button" name="all_customer_tickets" icon="fa-ticket"
+                        type="object" attrs="{'invisible': ['|', ('partner_id', '=', False), ('all_partner_tickets', '&lt;=', 0)]}">
+                        <field name="all_partner_tickets" widget="statinfo" />
+                    </button>     
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

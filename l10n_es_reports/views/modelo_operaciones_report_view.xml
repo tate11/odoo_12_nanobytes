@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="modelo_operaciones_report_tree" model="ir.ui.view">
+            <field name="name">modelo.operaciones.report.tree</field>
+            <field name="model">modelo.operaciones.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="tipo"/>
+                    <field name="anio"/>
+                    <field name="partner_id"/>
+                    <field name="importe_t1"/>
+                    <field name="importe_t2"/>
+                    <field name="importe_t3"/>
+                    <field name="importe_t4"/>
+                    <field name="importe_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="modelo_operaciones_report_search" model="ir.ui.view">
+            <field name="name">modelo.operaciones.report.search</field>
+            <field name="model">modelo.operaciones.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="partner_id"/>
+                    <field name="tipo"/>
+                    <field name="anio"/>
+                    <!--
+                    <separator/>
+                    <group expand="0" string="Agrupar por...">
+                        <filter string="Año" context="{'group_by' : 'anio'}" />
+                        <filter string="Tipo" context="{'group_by' : 'tipo'}" />
+                    </group>
+                	-->
+                </search>
+            </field>
+        </record>
+
+
+        <!-- Modelo 347 -->
+        
+        <record id="action_modelo_operaciones_report" model="ir.actions.act_window">
+            <field name="name">Modelo 347</field>
+            <field name="res_model">modelo.operaciones.report</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="modelo_operaciones_report_tree"/>
+            <field name="search_view_id" ref="modelo_operaciones_report_search"/>
+        </record>
+        
+        <menuitem id="menu_modelo_operaciones_report_tree"
+                  name="Modelo 347"
+                  parent="l10n_es_reports.spanish_reports_menu"
+                  action="action_modelo_operaciones_report"
+                  sequence="9"
+        />
+
+
+        <!-- Modelo 349 -->
+
+        <record id="modelo_operaciones349_report_tree" model="ir.ui.view">
+            <field name="name">modelo.operaciones349.report.tree</field>
+            <field name="model">modelo.operaciones349.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="tipo"/>
+                    <field name="anio"/>
+                    <field name="trimestre"/>
+                    <field name="mes"/>
+                    <field name="partner_id"/>
+                    <field name="importe_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="modelo_operaciones349_report_search" model="ir.ui.view">
+            <field name="name">modelo.operaciones349.report.search</field>
+            <field name="model">modelo.operaciones349.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="partner_id"/>
+                    <field name="tipo"/>
+                    <field name="anio"/>
+                    <field name="trimestre"/>
+                    <field name="mes"/>
+                    <!--separator/>
+                    <group expand="0" string="Agrupar por...">
+                        <filter string="Año" domain="[]" context="{'group_by' : 'anio'}" />
+                        <filter string="Trimestre" domain="[]" context="{'group_by' : 'trimestre'}" />
+                        <filter string="Mes" domain="[]" context="{'group_by' : 'mes'}" />
+                        <filter string="Empresa" domain="[]" context="{'group_by' : 'partner_id'}" />
+                        <filter string="Tipo" domain="[]" context="{'group_by' : 'tipo'}" />
+                    </group-->
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_modelo_operaciones349_report" model="ir.actions.act_window">
+            <field name="name">Modelo 349</field>
+            <field name="res_model">modelo.operaciones349.report</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="modelo_operaciones349_report_tree"/>
+            <field name="search_view_id" ref="modelo_operaciones349_report_search"/>
+        </record>
+        
+        <menuitem id="menu_modelo_operaciones349_report_tree"
+                  name="Modelo 349"
+                  parent="l10n_es_reports.spanish_reports_menu"
+                  action="action_modelo_operaciones349_report"
+                  sequence="10"
+        />
+
+
+        <!-- Modelo 180 -->
+
+        <record id="modelo_180_report_tree" model="ir.ui.view">
+            <field name="name">modelo.180.report.tree</field>
+            <field name="model">modelo.180.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="anio"/>
+                    <field name="clave"/>
+                    <field name="name_partner"/>
+                    <field name="nif_partner"/>
+                    <field name="provincia"/>
+                    <field name="rend_dinerario"/>
+                    <field name="porcentaje"/>
+                    <field name="cuota_dineraria"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="modelo_180_report_search" model="ir.ui.view">
+            <field name="name">modelo.180.report.search</field>
+            <field name="model">modelo.180.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="anio"/>
+                    <field name="clave"/>
+                    <field name="name_partner"/>
+                    <field name="nif_partner"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_modelo_180_report" model="ir.actions.act_window">
+            <field name="name">Modelo 180</field>
+            <field name="res_model">modelo.180.report</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="modelo_180_report_tree"/>
+            <field name="search_view_id" ref="modelo_180_report_search"/>
+        </record>
+        
+        <menuitem id="menu_modelo_180_report_tree"
+                  name="Modelo 180"
+                  parent="l10n_es_reports.spanish_reports_menu"
+                  action="action_modelo_180_report"
+                  sequence="5"/>
+
+
+        <!-- Modelo 190 -->
+        
+        <record id="modelo_190_report_tree" model="ir.ui.view">
+            <field name="name">modelo.190.report.tree</field>
+            <field name="model">modelo.190.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="anio"/>
+                    <field name="clave"/>
+                    <field name="name_partner"/>
+                    <field name="nif_partner"/>
+                    <field name="provincia"/>
+                    <field name="rend_dinerario"/>
+                    <field name="porcentaje"/>
+                    <field name="cuota_dineraria"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="modelo_190_report_search" model="ir.ui.view">
+            <field name="name">modelo.190.report.search</field>
+            <field name="model">modelo.190.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="anio"/>
+                    <field name="clave"/>
+                    <field name="name_partner"/>
+                    <field name="nif_partner"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_modelo_190_report" model="ir.actions.act_window">
+            <field name="name">Modelo 190</field>
+            <field name="res_model">modelo.190.report</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="modelo_190_report_tree"/>
+            <field name="search_view_id" ref="modelo_190_report_search"/>
+        </record>
+        
+        <menuitem id="menu_modelo_190_report_tree"
+                  name="Modelo 190"
+                  parent="l10n_es_reports.spanish_reports_menu"
+                  action="action_modelo_190_report"
+                  sequence="6"
+        />
+
+        
+    </data>
+</odoo>

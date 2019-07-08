@@ -1,0 +1,39 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="perso_signature_pin.portal_signature_pin">
+        <div class="modal-footer">
+            <div>
+                <button id="boton_submit" type="submit" t-attf-class="btn btn-primary">Firmar &amp; Confirmar</button> o
+                <button type="button" class="btn btn-link" data-dismiss="modal" style="padding: 0">Cancelar</button>
+            </div>
+        </div>
+        <!--form id="o_portal_sign_pin_accept" method="POST">
+            <input type="hidden" name="csrf_token" t-att-value="widget.options.csrf_token"/>
+            <button id="boton_test">TEST</button>
+
+            <div class="mt16 clearfix">
+              <button type="submit" id ="boton_test_submit" class="btn btn-primary o_portal_sign_submit float-right"><t t-esc="widget.options.signLabel or 'Accept &amp; Sign'"/></button>
+            </div>
+        </form-->
+    </t>
+
+    <t t-name="portal.portal_signature_pin_success">
+        <div class="alert alert-success" role="status">
+            <strong>Thank You !</strong><br />
+            <span t-esc="widget.success"/>
+            <a t-att-href="widget.redirect_url">Click here to see your document.</a>
+        </div>
+    </t>
+
+    <t t-name="perso_signature_pin.resent_email">
+        <span>
+            <a role="button" href="#" id="resent" ><b>aquí</b></a>
+        </span>
+    </t>
+    <t t-name="perso_signature_pin.boton_email">
+        <div>
+            <a role="button" class="btn btn-primary btn-block mb8" id="boton_pin" data-toggle="modal" data-target="#modalaccept_sign" href="#" >
+                <i class="fa fa-check"/> Aceptar &amp; Firmar
+            </a>
+        </div>
+    </t>
+</templates>

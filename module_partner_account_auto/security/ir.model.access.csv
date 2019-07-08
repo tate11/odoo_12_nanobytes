@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_module_account_increment_module_account_increment,module_account_increment.module_account_increment,model_module_account_increment_module_account_increment,,1,0,0,0

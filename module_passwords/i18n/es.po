@@ -1,0 +1,459 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* module_passwords
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e-20181009\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-04 12:36+0000\n"
+"PO-Revision-Date: 2018-12-04 12:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner__passwords_count
+msgid "# of Passwords"
+msgstr "# de contraseñas"
+
+#. module: module_passwords
+#: model:ir.module.category,name:module_passwords.pass_management
+msgid "Access to password"
+msgstr "Acceder a contraseñas"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__active
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_search_view
+msgid "Active"
+msgstr "Activo"
+
+#. module: module_passwords
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_search_view
+msgid "Archive"
+msgstr "Archivar"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:38
+#, python-format
+msgid "Author"
+msgstr "Autor"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__user_id
+msgid "Autor"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__compute_key
+msgid "Clave de encriptación"
+msgstr ""
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:36
+#, python-format
+msgid "Client"
+msgstr "Cliente"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__partner_id
+msgid "Cliente"
+msgstr ""
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:44
+#, python-format
+msgid "Clipboard password"
+msgstr "Copiar contraseña"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__color
+msgid "Color Index"
+msgstr "Índice de Colores"
+
+#. module: module_passwords
+#: model:ir.model,name:module_passwords.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__compute_password
+msgid "Contraseña"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__password
+msgid "Contraseña Original"
+msgstr ""
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/helpdesk_ticket.py:29
+#: model:ir.model.fields,field_description:module_passwords.field_helpdesk_ticket__passwords_count
+#, python-format
+msgid "Contraseñas"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.actions.act_window,name:module_passwords.act_helpdesk_2_passwords
+msgid "Contraseñas cliente"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__clipboard_password
+msgid "Copiar contraseña"
+msgstr ""
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:37
+#, python-format
+msgid "Create date"
+msgstr "Fecha de creación"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__create_uid
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__create_date
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__display_name
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__date
+msgid "Fecha de creación"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: module_passwords
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_form_view
+msgid "General"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model,name:module_passwords.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Tiquete del Servicio de Asistencia"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__id
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__id
+msgid "ID"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: module_passwords
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_form_view
+msgid "Internal note"
+msgstr "Nota interna"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:39
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__ip_server
+#, python-format
+msgid "Ip / Url"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:42
+#, python-format
+msgid "Key"
+msgstr "Clave de encriptación"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords____last_update
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__write_uid
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__write_date
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__level
+msgid "Level"
+msgstr "Nivel"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:40
+#, python-format
+msgid "Level 1"
+msgstr "Nivel 1"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:40
+#, python-format
+msgid "Level 2"
+msgstr "Nivel 2"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:40
+#, python-format
+msgid "Level 3"
+msgstr "Nivel 3"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: module_passwords
+#: model:res.groups,name:module_passwords.pass_manager
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:35
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. module: module_passwords
+#: selection:res.partner.passwords,level:0
+msgid "Nivel 1"
+msgstr ""
+
+#. module: module_passwords
+#: selection:res.partner.passwords,level:0
+msgid "Nivel 2"
+msgstr ""
+
+#. module: module_passwords
+#: selection:res.partner.passwords,level:0
+msgid "Nivel 3"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__name
+msgid "Nombre"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__note
+msgid "Nota"
+msgstr ""
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:47
+#, python-format
+msgid "Note"
+msgstr "Nota"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:43
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_form_view
+#, python-format
+msgid "Password"
+msgstr "Contraseña"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:45
+#, python-format
+msgid "Password Original"
+msgstr "Contraseña Original"
+
+#. module: module_passwords
+#: model:ir.model,name:module_passwords.model_res_partner_passwords_tag
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_tag_form_view
+msgid "Password Tag"
+msgstr "Etiquetas contraseña"
+
+#. module: module_passwords
+#: model:ir.actions.act_window,name:module_passwords.passwords_tag_action
+#: model:ir.ui.menu,name:module_passwords.passwords_tags_menu
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_tag_tree_view
+msgid "Password Tags"
+msgstr "Etiquetas contraseña"
+
+#. module: module_passwords
+#: model:ir.actions.act_window,name:module_passwords.passwords_action
+#: model:ir.ui.menu,name:module_passwords.main_passwords_menu
+#: model:ir.ui.menu,name:module_passwords.passwords_days_menu
+#: model:ir.ui.menu,name:module_passwords.passwords_menu
+#: model_terms:ir.ui.view,arch_db:module_passwords.res_partner_view_buttons
+msgid "Passwords"
+msgstr "Contraseñas"
+
+#. module: module_passwords
+#: model:ir.actions.act_window,name:module_passwords.act_res_partner_2_passwords
+msgid "Passwords Customer"
+msgstr "Contraseñas de cliente"
+
+#. module: module_passwords
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_tree_view
+msgid "Passwords Tree"
+msgstr "Arbol de Contraseñas"
+
+#. module: module_passwords
+#: model_terms:ir.ui.view,arch_db:module_passwords.passwords_search_view
+msgid "Search Passwords"
+msgstr "Busqueda de contraseña"
+
+#. module: module_passwords
+#: model:ir.ui.menu,name:module_passwords.passwords_settings_menu
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords_tag__name
+msgid "Tag Name"
+msgstr "Nombre de etiqueta"
+
+#. module: module_passwords
+#: sql_constraint:res.partner.passwords.tag:0
+msgid "Tag name already exists !"
+msgstr "Etiqueta ya existente !"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__tag_ids
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/helpdesk_ticket.py:30
+#: code:addons/module_passwords/models/helpdesk_ticket.py:36
+#: model:ir.model.fields,field_description:module_passwords.field_helpdesk_ticket__all_partner_tickets
+#, python-format
+msgid "Todos los tiquets"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: module_passwords
+#: code:addons/module_passwords/models/passwords.py:41
+#: model:res.groups,name:module_passwords.pass_user
+#, python-format
+msgid "User"
+msgstr "Usuario"
+
+#. module: module_passwords
+#: model:ir.module.category,description:module_passwords.pass_management
+msgid "User access level for this module"
+msgstr "Nivel de usuario para acceder a este modulo"
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__user
+msgid "Usuario"
+msgstr ""
+
+#. module: module_passwords
+#: model:ir.model.fields,field_description:module_passwords.field_res_partner_passwords__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: module_passwords
+#: model:ir.model.fields,help:module_passwords.field_res_partner_passwords__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: module_passwords
+#: model:ir.model,name:module_passwords.model_res_partner_passwords
+msgid "res.partner.passwords"
+msgstr ""
+

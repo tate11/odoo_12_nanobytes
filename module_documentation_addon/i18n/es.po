@@ -1,0 +1,245 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* module_documentation_addon
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e-20181009\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-03 15:51+0000\n"
+"PO-Revision-Date: 2018-12-03 15:51+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:25
+#, python-format
+msgid "%s created from DMS"
+msgstr "%s creado desde DMS"
+
+#. module: module_documentation_addon
+#: model:ir.model,name:module_documentation_addon.model_documents_workflow_rule
+msgid "A set of condition and actions which will be available to all attachments matching the conditions"
+msgstr "Un conjunto de condiciones y acciones qué seran disponible para todos los documentos qué cuadra con las condiciones"
+
+#. module: module_documentation_addon
+#: selection:documents.workflow.rule,create_model:0
+msgid "Aplicación"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:9
+#, python-format
+msgid "App"
+msgstr "Aplicación"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:29
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__documentation_tags_app
+#, python-format
+msgid "App Tags"
+msgstr "Etiquetas de aplicación"
+
+#. module: module_documentation_addon
+#: model:ir.model,name:module_documentation_addon.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: module_documentation_addon
+#: model:ir.model,name:module_documentation_addon.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_documents_workflow_rule__create_model
+msgid "Create"
+msgstr "Crear"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.ticket_view_form_inherit
+msgid "Create documentation"
+msgstr "Crear documentación"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__dms_nanobytes_settings
+msgid "Dms Nanobytes Settings"
+msgstr "Configuración DMS Nanobytes"
+
+#. module: module_documentation_addon
+#: model:ir.model,name:module_documentation_addon.model_ir_attachment
+msgid "Document"
+msgstr "Documento"
+
+#. module: module_documentation_addon
+#: selection:documents.workflow.rule,create_model:0
+#: model:ir.model,name:module_documentation_addon.model_documentation_documentation
+msgid "Documentación"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:9
+#, python-format
+msgid "Documentation"
+msgstr "Documentación"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:18
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__documentation_folder
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__dms_nanobytes_settings
+#, python-format
+msgid "Documentation Folder"
+msgstr "Carpeta de documentación"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:25
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__documentation_tags_documentation
+#, python-format
+msgid "Documentation Tags"
+msgstr "Etiquetas de documentación"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__documentation_tags_app
+msgid "Documentation Tags App"
+msgstr "Etiquetas de aplicación"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__documentation_tags_documentation
+msgid "Documentation Tags Documentation"
+msgstr "Etiquedas de documentación"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__documentation_tags_manual
+msgid "Documentation Tags Manual"
+msgstr "Etiquetas de manual"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_company__documentation_tags_script
+msgid "Documentation Tags Script"
+msgstr "Etiquetas de script"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_documents_workflow_rule__has_business_option
+msgid "Has Business Option"
+msgstr "Tiene opciones de empresa"
+
+#. module: module_documentation_addon
+#: model:ir.model,name:module_documentation_addon.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Tiquete del Servicio de Asistencia"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:9
+#: selection:documents.workflow.rule,create_model:0
+#: model:ir.model,name:module_documentation_addon.model_documentation_manual
+#, python-format
+msgid "Manual"
+msgstr "Manual"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:37
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__documentation_tags_manual
+#, python-format
+msgid "Manual Tags"
+msgstr "Etiquetas de manual"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:40
+#, python-format
+msgid "New "
+msgstr "Nuevo"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/Documentation.py:9
+#: code:addons/module_documentation_addon/models/Manual.py:9
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.view_documentation_documentation_inherit_form
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.view_documentation_manual_inherit_form
+#, python-format
+msgid "Partners"
+msgstr "Clientes"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:9
+#: selection:documents.workflow.rule,create_model:0
+#, python-format
+msgid "Script"
+msgstr "Script"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:33
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__documentation_tags_script
+#, python-format
+msgid "Script Tags"
+msgstr "Etiquetas de script"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.res_config_settings_view_form
+msgid "Select the folder to be used for documentation's documents"
+msgstr "Selecciona la carpeta qué se usara para los documentos de documentación"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.res_config_settings_view_form
+msgid "Select the tags to be applied to app's new documents"
+msgstr "Selecciona la carpeta qué se usara para los nuevos documentos de aplicación"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.res_config_settings_view_form
+msgid "Select the tags to be applied to documentation's new documents"
+msgstr "Selecciona la carpeta qué se usara para los nuevos documentos de documentación"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.res_config_settings_view_form
+msgid "Select the tags to be applied to manual's new documents"
+msgstr "Selecciona la carpeta qué se usara para los nuevos documentos de manual"
+
+#. module: module_documentation_addon
+#: model_terms:ir.ui.view,arch_db:module_documentation_addon.res_config_settings_view_form
+msgid "Select the tags to be applied to script's new documents"
+msgstr "Selecciona la carpeta qué se usara para los nuevos documentos de script"
+
+#. module: module_documentation_addon
+#: model:ir.model.fields,field_description:module_documentation_addon.field_documentation_documentation__partner_ids
+#: model:ir.model.fields,field_description:module_documentation_addon.field_documentation_manual__partner_ids
+msgid "Socios"
+msgstr "Clientes"
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/Helpdesk.py:76
+#, python-format
+msgid "The ticket must be closed to create documentation"
+msgstr "El ticket debe estar cerrado para crear la documentación."
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:17
+#, python-format
+msgid "app"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:21
+#, python-format
+msgid "documentation"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/res_config_settings.py:21
+#: model:ir.model.fields,field_description:module_documentation_addon.field_res_config_settings__documentation_folder
+#, python-format
+msgid "documentation default folder"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:23
+#, python-format
+msgid "manual"
+msgstr ""
+
+#. module: module_documentation_addon
+#: code:addons/module_documentation_addon/models/workflow.py:19
+#, python-format
+msgid "script"
+msgstr ""
+
