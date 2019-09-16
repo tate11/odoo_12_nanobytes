@@ -13,6 +13,6 @@ RUN set -x; \
             zlib1g-dev \
         && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install pycryptodome simple-crypt
-
 COPY . /mnt/extra-addons/
+
+RUN pip3 install -r /mnt/extra-addons/requirements.txt
