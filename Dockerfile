@@ -15,4 +15,5 @@ RUN set -x; \
 
 COPY . /mnt/extra-addons/
 
+RUN pip3 install wheel
 RUN pip3 install -r /mnt/extra-addons/requirements.txt
