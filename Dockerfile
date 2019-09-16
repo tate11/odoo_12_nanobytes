@@ -4,7 +4,7 @@ MAINTAINER Nanobytes Informática y Telecomunicaciones <soporte@nanobytes.es>
 RUN set -x; \
         apt-get update \
         && apt-get install -y --no-install-recommends \
-            python-dev \
+            python3-dev \
             build-essential \
             libssl-dev \
             libffi-dev \
